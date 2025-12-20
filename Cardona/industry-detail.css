@@ -286,6 +286,12 @@
 
 /* Responsive Design */
 @media (max-width: 1200px) {
+  .back-button {
+    left: 80px;
+    padding: 12px 20px;
+    font-size: 13px;
+  }
+
   .hero-image {
     height: 280px;
   }
@@ -424,6 +430,9 @@
     display: inline-flex;
     margin-bottom: 24px;
     width: auto;
+    padding: 10px 16px;
+    font-size: 13px;
+    gap: 6px;
   }
 
   .hero-image {
