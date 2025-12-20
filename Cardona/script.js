@@ -214,16 +214,16 @@ document.addEventListener('DOMContentLoaded', function () {
       card.addEventListener('click', function() {
         const industry = this.dataset.industry;
         const industryPages = {
-          'healthcare': 'industries/healthcare-detail.html',
-          'automotive': 'industries/automotive-transportation-detail.html',
-          'government': 'industries/government-detail.html',
-          'construction': 'industries/construction-detail.html',
-          'technology': 'industries/technology-detail.html',
-          'logistics': 'industries/logistics-detail.html',
-          'hospitality': 'industries/hospitality-detail.html',
-          'energy': 'industries/energy-utilities.html',
-          'public-safety': 'industries/publicsafety-detail.html',
-          'community-impact': 'industries/community-impact-detail.html'
+          'healthcare': 'healthcare-detail.html',
+          'automotive': 'automotive-transportation-detail.html',
+          'government': 'government-detail.html',
+          'construction': 'construction-detail.html',
+          'technology': 'technology-detail.html',
+          'logistics': 'logistics-detail.html',
+          'hospitality': 'hospitality-detail.html',
+          'energy': 'energy-utilities.html',
+          'public-safety': 'publicsafety-detail.html',
+          'community-impact': 'community-impact-detail.html'
         };
         
         if (industryPages[industry]) {
