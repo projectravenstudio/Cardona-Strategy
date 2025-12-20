@@ -195,7 +195,7 @@ document.addEventListener('DOMContentLoaded', function () {
       card.addEventListener('click', () => {
         const offering = card.getAttribute('data-offering');
         const offeringPages = {
-          'strategy': 'offerings/strategic-planning-detail.html',
+          'strategy': 'strategic-planning-detail.html',
           'marketing': 'offerings/brand-marketing-detail.html',
           'capital': 'offerings/capital-funding-detail.html',
           'procurement': 'offerings/procurement-operations-detail.html',
@@ -305,3 +305,4 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
   
+
