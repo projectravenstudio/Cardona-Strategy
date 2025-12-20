@@ -178,6 +178,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     document.getElementById('contactBtn')?.addEventListener('click', (e) => {
+      if (window.innerWidth <= 768 && document.body.classList.contains('sidebar-expanded')) {
         closeSidebar();
       }
       openContactModal();
