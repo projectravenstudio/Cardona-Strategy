@@ -90,7 +90,6 @@ body.industries {
   inset: 0;
   z-index: 2;
   opacity: 0.3;
-  /* gradient overlay to improve legibility over images */
   background: linear-gradient(180deg, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.62) 100%);
 }
 
@@ -193,10 +192,7 @@ body.industries {
   transform: translateX(4px);
 }
 
-/* CTA section styles (see styles.css) */
 
-
-/* Responsive Design */
 @media (max-width: 1200px) {
   .industries-header h1 {
     font-size: 56px;
