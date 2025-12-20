@@ -169,9 +169,9 @@ document.addEventListener('DOMContentLoaded', function () {
           if (key === 'home') {
             finalPage = (isInOfferings || isInIndustries) ? '../index.html' : 'index.html';
           } else if (key === 'offerings') {
-            finalPage = (isInOfferings || isInIndustries) ? '../offerings/offerings.html' : 'offerings/offerings.html';
+            finalPage = (isInOfferings || isInIndustries) ? '..offerings.html' : 'offerings.html';
           } else if (key === 'industries') {
-            finalPage = (isInOfferings || isInIndustries) ? '../industries/industries.html' : 'industries/industries.html';
+            finalPage = (isInOfferings || isInIndustries) ? '..industries.html' : 'industries.html';
           }
 
           if (finalPage) {
