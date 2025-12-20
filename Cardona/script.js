@@ -196,11 +196,11 @@ document.addEventListener('DOMContentLoaded', function () {
         const offering = card.getAttribute('data-offering');
         const offeringPages = {
           'strategy': 'strategic-planning-detail.html',
-          'marketing': 'offerings/brand-marketing-detail.html',
-          'capital': 'offerings/capital-funding-detail.html',
-          'procurement': 'offerings/procurement-operations-detail.html',
-          'technology': 'offerings/technology-digital-detail.html',
-          'community': 'offerings/community-stakeholders.html'
+          'marketing': 'brand-marketing-detail.html',
+          'capital': 'capital-funding-detail.html',
+          'procurement': 'procurement-operations-detail.html',
+          'technology': 'technology-digital-detail.html',
+          'community': 'community-stakeholders.html'
         };
         
         if (offeringPages[offering]) {
