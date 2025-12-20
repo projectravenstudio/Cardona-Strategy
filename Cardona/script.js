@@ -130,11 +130,8 @@ document.addEventListener('DOMContentLoaded', function () {
           finalUrl = '../' + url;
         }
         window.location.href = finalUrl;
-      }, 100);
-      
-      setTimeout(() => {
         isNavigating = false;
-      }, 200);
+      }, 50);
     }
 
     document.querySelectorAll('.sidebar-menu-button').forEach((btn) => {
@@ -148,11 +145,6 @@ document.addEventListener('DOMContentLoaded', function () {
           e.stopPropagation();
 
           requestAnimationFrame(() => {
-            document.querySelectorAll('.sidebar-menu-button').forEach((b) => {
-              b.setAttribute('aria-pressed', 'false');
-            });
-            btn.setAttribute('aria-pressed', 'true');
-
             document.querySelectorAll('.sidebar-menu-item').forEach((item) => {
               item.classList.remove('active');
             });
@@ -161,7 +153,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
           setLocalStorage('cordona_active_menu', key);
 
-          // Close sidebar on mobile after nav click
           if (window.innerWidth <= 768) {
             closeSidebar();
           }
@@ -174,9 +165,9 @@ document.addEventListener('DOMContentLoaded', function () {
           if (key === 'home') {
             finalPage = (isInOfferings || isInIndustries) ? '../index.html' : 'index.html';
           } else if (key === 'offerings') {
-            finalPage = (isInOfferings || isInIndustries) ? '..offerings.html' : 'offerings.html';
+            finalPage = (isInOfferings || isInIndustries) ? '../offerings.html' : 'offerings.html';
           } else if (key === 'industries') {
-            finalPage = (isInOfferings || isInIndustries) ? '..industries.html' : 'industries.html';
+            finalPage = (isInOfferings || isInIndustries) ? '../industries.html' : 'industries.html';
           }
 
           if (finalPage) {
@@ -286,7 +277,6 @@ document.addEventListener('DOMContentLoaded', function () {
       const activeKey = localStorage.getItem('cordona_active_menu') || 'home';
       const activeBtn = document.querySelector(`[data-key="${activeKey}"]`);
       if (activeBtn) {
-        activeBtn.setAttribute('aria-pressed', 'true');
         activeBtn.closest('.sidebar-menu-item')?.classList.add('active');
       }
     } catch (e) {}
