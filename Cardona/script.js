@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const message = document.getElementById('messageInput').value;
 
         try {
-          const response = await fetch('https://formspree.io/f/mykgepzq', {
+          const response = await fetch('https://formspree.io/f/mgegqpvq', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -161,6 +161,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
           setLocalStorage('cordona_active_menu', key);
 
+          // Close sidebar on mobile after nav click
+          if (window.innerWidth <= 768) {
+            closeSidebar();
+          }
+
           const currentPath = window.location.pathname;
           const isInOfferings = currentPath.includes('/offerings/');
           const isInIndustries = currentPath.includes('/industries/');
@@ -184,6 +189,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('contactBtn')?.addEventListener('click', openContactModal);
     document.getElementById('initiateBtn')?.addEventListener('click', openContactModal);
     document.getElementById('scheduleBtn')?.addEventListener('click', openContactModal);
+    document.getElementById('customSolutionBtn')?.addEventListener('click', openContactModal);
 
     document.querySelectorAll('.cta-btn, .custom-cta').forEach((btn) => {
       if (btn.textContent.includes('Start a Conversation') || btn.textContent.includes('Work With Us')) {
