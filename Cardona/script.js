@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const message = document.getElementById('messageInput').value;
 
         try {
-          const response = await fetch('https://formspree.io/f/mgegqpvq', {
+          const response = await fetch('https://formspree.io/f/mykgepzq', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -302,5 +302,6 @@ document.addEventListener('DOMContentLoaded', function () {
     window.closeContactModal = closeContactModal;
   })();
 });
+
 
   
