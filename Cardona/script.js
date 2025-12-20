@@ -177,7 +177,11 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     });
 
-    document.getElementById('contactBtn')?.addEventListener('click', openContactModal);
+    document.getElementById('contactBtn')?.addEventListener('click', (e) => {
+        closeSidebar();
+      }
+      openContactModal();
+    });
     document.getElementById('initiateBtn')?.addEventListener('click', openContactModal);
     document.getElementById('scheduleBtn')?.addEventListener('click', openContactModal);
     document.getElementById('customSolutionBtn')?.addEventListener('click', openContactModal);
