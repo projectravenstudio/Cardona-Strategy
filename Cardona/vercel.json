@@ -1,11 +1,6 @@
 {
   "routes": [
     {
-      "src": "^/(.*)\\.html$",
-      "status": 301,
-      "headers": { "Location": "/$1" }
-    },
-    {
       "src": "^/([^/.]+)$",
       "dest": "/$1.html"
     }
