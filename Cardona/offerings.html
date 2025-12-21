@@ -9,7 +9,10 @@
   <link rel="stylesheet" href="./offerings.css" />
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style" />
 </head>
-<body class="sidebar-expanded offerings">
+<body class="offerings">
+  <script>
+    (function(){ try{ var s = localStorage.getItem('cordona_sidebar_expanded'); if (s === 'true') document.body.classList.add('sidebar-expanded'); }catch(e){} })();
+  </script>
   <div id="app">
     <aside class="sidebar" id="sidebar" role="navigation" aria-label="Main Navigation">
       <div class="sidebar-inner">

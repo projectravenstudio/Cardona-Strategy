@@ -116,21 +116,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function navigateWithTransition(url) {
       document.body.classList.add('page-exit');
+      isNavigating = true;
       setTimeout(() => {
         let finalUrl = url;
         const currentPath = window.location.pathname + window.location.hash;
-        const isOfferingDetailPage = currentPath.includes('/offerings/') && 
-                                     !currentPath.includes('offerings.html') &&
-                                     !currentPath.includes('offerings.html');
-        const isIndustryDetailPage = currentPath.includes('/industries/') && 
-                                     !currentPath.includes('industries.html') &&
-                                     !currentPath.includes('industries.html');
+        const isOfferingDetailPage = currentPath.includes('/offerings/') && !currentPath.includes('offerings.html');
+        const isIndustryDetailPage = currentPath.includes('/industries/') && !currentPath.includes('industries.html');
 
         if ((isOfferingDetailPage || isIndustryDetailPage) && !url.startsWith('../')) {
           finalUrl = '../' + url;
         }
         window.location.href = finalUrl;
-        isNavigating = false;
       }, 50);
     }
 
