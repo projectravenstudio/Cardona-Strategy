@@ -5,6 +5,9 @@ document.addEventListener('DOMContentLoaded', function () {
     function openContactModal() {
       const modal = document.getElementById('contactModal');
       if (modal) {
+        if (window.innerWidth <= 1024 && document.body.classList.contains('sidebar-expanded')) {
+          closeSidebar();
+        }
         modal.classList.add('active');
         document.body.style.overflow = 'hidden';
       }
