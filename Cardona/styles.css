@@ -316,7 +316,7 @@ body.page-enter main {
 .cta-content h2 { font-size: 56px; font-weight: 700; color: #1d1d1f; margin: 0 0 24px; line-height: 1.1; }
 .cta-content p { font-size: 20px; color: #1d1d1f; line-height: 1.5; margin: 0 0 48px; max-width: 800px; margin-left: auto; margin-right: auto; }
 
-.cta-btn { display: inline-flex; align-items: center; gap: 14px; background-color: #043763; color: white; border: 0; padding: 18px 44px; border-radius: 999px; font-weight: 600; font-size: 17px; cursor: pointer; transition: all .16s ease; box-shadow: 0 10px 30px rgba(4,55,99,0.12); font-family: inherit; }
+.cta-btn { display: inline-flex; align-items: center; gap: 14px; background-color: #043763; color: white; border: 0; padding: 18px 44px; border-radius: 999px; font-weight: 600; font-size: 15px; cursor: pointer; transition: all .16s ease; box-shadow: 0 10px 30px rgba(4,55,99,0.12); font-family: inherit; }
 .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 14px 36px rgba(4,55,99,0.14); }
 .cta-arrow { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; transition: transform .3s var(--easing); font-size: 18px; color: inherit; line-height: 1; -webkit-font-smoothing: antialiased; }
 .cta-arrow svg { display: block; width: 18px; height: 18px; stroke: currentColor; }
