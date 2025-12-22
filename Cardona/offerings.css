@@ -308,6 +308,10 @@
 .custom-cta span {
   display: inline-flex;
   transition: transform 0.3s ease;
+  color: inherit;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  min-width: 18px;
 }
 
 .custom-cta:hover span {
