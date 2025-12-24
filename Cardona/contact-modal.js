@@ -71,16 +71,19 @@ class ContactModal extends HTMLElement {
             max-height: 92vh;
             height: auto;
             border-radius: 12px 12px 0 0;
-            padding: 16px;
-            overflow-y: auto;
+            padding: 12px;
+            overflow-y: hidden; /* controlled dynamically when needed */
             -webkit-overflow-scrolling: touch;
           }
-          .contact-modal-content::before { display: block; content: ''; width: 36px; height: 4px; background: #e5e7eb; border-radius: 999px; margin: 6px auto 12px; }
-          .contact-modal h2 { font-size: 20px; }
-          .contact-modal-close { top: 8px; right: 12px; font-size: 26px; padding: 12px; }
-          .send-message-btn, .submit-btn { width: 100%; min-width: 0; padding: 12px; font-size: 15px; }
-          .contact-modal-front, .contact-modal-back { padding: 12px; gap: 12px; align-items: stretch; text-align: left; }
-          .form-group label { font-size: 13px; }
+          .contact-modal-content::before { display: block; content: ''; width: 36px; height: 4px; background: #e5e7eb; border-radius: 999px; margin: 6px auto 10px; }
+          .contact-modal h2 { font-size: 18px; margin-bottom: 8px; }
+          .contact-modal-close { top: 8px; right: 12px; font-size: 24px; padding: 10px; }
+          .send-message-btn, .submit-btn { width: 100%; min-width: 0; padding: 10px; font-size: 15px; border-radius: 10px; }
+          .contact-modal-front, .contact-modal-back { padding: 10px; gap: 10px; align-items: stretch; text-align: left; }
+          .form-group { gap: 6px; }
+          .form-group label { font-size: 12px; }
+          .form-group input, .form-group textarea, .form-group select { font-size: 14px; padding: 10px; }
+          .form-group textarea { min-height: 64px; }
         }
 
         /* Medium screens */
@@ -158,7 +161,7 @@ class ContactModal extends HTMLElement {
 
                 <div class="form-group">
                   <label for="challengeInput">Challenge details</label>
-                  <textarea id="challengeInput" name="challenge" required placeholder="Describe the challenge or scope..." rows="5" aria-required="true"></textarea>
+                  <textarea id="challengeInput" name="challenge" required placeholder="Describe the challenge or scope..." rows="4" aria-required="true"></textarea>
                 </div>
 
                 <button type="submit" class="submit-btn">Send Message</button>
@@ -215,8 +218,19 @@ class ContactModal extends HTMLElement {
       return;
     }
 
-    const frontHeight = Math.ceil(front.scrollHeight) + 28; // include padding
-    const backHeight = Math.ceil(back.scrollHeight) + 28;
+    const paddingBuffer = 28; // include padding
+    const maxVisible = Math.floor(window.innerHeight * 0.92); // match CSS max-height behavior
+    const frontHeightRaw = Math.ceil(front.scrollHeight) + paddingBuffer;
+    const backHeightRaw = Math.ceil(back.scrollHeight) + paddingBuffer;
+    const frontHeight = Math.min(frontHeightRaw, maxVisible);
+    let backHeight = Math.min(backHeightRaw, maxVisible);
+
+    // if back content exceeds viewport, enable inner scrolling so all inputs can be reached
+    if (backHeightRaw > maxVisible) {
+      this._content.style.overflowY = 'auto';
+    } else {
+      this._content.style.overflowY = 'hidden';
+    }
 
     // store for resize handling
     this._backHeight = backHeight;
@@ -328,7 +342,12 @@ class ContactModal extends HTMLElement {
     // also set back height if the back content is taller so the container can expand smoothly
     const back = this._content.querySelector('.contact-modal-back');
     if (back) {
-      this._backHeight = Math.ceil(back.scrollHeight) + 28;
+      const paddingBuffer = 28;
+      const backRaw = Math.ceil(back.scrollHeight) + paddingBuffer;
+      const maxVisible = Math.floor(window.innerHeight * 0.92);
+      this._backHeight = Math.min(backRaw, maxVisible);
+      // set inner overflow only if content is taller than allowed viewport area
+      this._content.style.overflowY = backRaw > maxVisible ? 'auto' : 'hidden';
     }
 
     // reset height to auto after opening transition so layout can adapt
@@ -345,9 +364,16 @@ class ContactModal extends HTMLElement {
     const front = this._content.querySelector('.contact-modal-front');
     const back = this._content.querySelector('.contact-modal-back');
 
-    const frontHeight = front ? Math.ceil(front.scrollHeight) + 28 : 0;
-    const backHeight = back ? Math.ceil(back.scrollHeight) + 28 : 0;
+    const paddingBuffer = 28;
+    const maxVisible = Math.floor(window.innerHeight * 0.92);
+    const frontHeightRaw = front ? Math.ceil(front.scrollHeight) + paddingBuffer : 0;
+    const backHeightRaw = back ? Math.ceil(back.scrollHeight) + paddingBuffer : 0;
+    const frontHeight = Math.min(frontHeightRaw, maxVisible);
+    const backHeight = Math.min(backHeightRaw, maxVisible);
     this._backHeight = backHeight;
+
+    // toggle inner overflow when content exceeds allowed viewport height
+    this._content.style.overflowY = backHeightRaw > maxVisible ? 'auto' : 'hidden';
 
     if (this._flipper.classList.contains('flipped')) {
       // if showing the back, ensure the container matches the back height
