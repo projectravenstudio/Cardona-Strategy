@@ -14,62 +14,96 @@ class ContactModal extends HTMLElement {
           z-index: 1000;
           align-items: center;
           justify-content: center;
+          padding: 16px;
+          -webkit-overflow-scrolling: touch;
           font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
         }
         .contact-modal.active { display: flex; }
         .contact-modal-content {
           background: #ffffff;
           border-radius: 16px;
-          max-width: 440px;
-          width: calc(100% - 48px);
-          max-height: 95vh;
+          max-width: 620px;
+          width: min(620px, calc(100% - 32px));
+          max-height: 96vh;
           height: auto;
           overflow: hidden;
           box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-          animation: slideUp 0.3s ease-out;
+          animation: slideUp 0.28s ease-out;
           transition: height 0.28s ease;
           position: relative;
           padding: 28px;
+          display: flex;
+          flex-direction: column;
         }
-        .contact-modal-flipper { position: relative; width: 100%; transition: transform 0.6s; transform-style: preserve-3d; }
+        .contact-modal-content::before { display: none; content: ''; }
+        .contact-modal-flipper { position: relative; width: 100%; transition: transform 0.6s; transform-style: preserve-3d; transform-origin: center; }
         .contact-modal-flipper.flipped { transform: rotateY(180deg); }
         .contact-modal-front, .contact-modal-back { padding: 28px; width: 100%; backface-visibility: hidden; display: flex; flex-direction: column; gap: 16px; align-items: center; text-align: center; }
         .contact-modal-back { transform: rotateY(180deg); position: absolute; top: 0; left: 0; width: 100%; }
         .send-message-btn { min-width: 240px; width: auto; align-self: center; background-color: #043763; color: white; border: none; padding: 14px 28px; border-radius: 8px; font-weight: 600; font-size: 15px; cursor: pointer; margin-top: 12px; transition: all 0.2s; }
         .send-message-btn:hover { background-color: #0a4d8c; transform: translateY(-2px); }
-        .contact-form { display: flex; flex-direction: column; gap: 8px; }
-        .form-group { display: flex; flex-direction: column; gap: 8px; }
-        .form-group label { font-size: 12px; font-weight: 600; color: #1d1d1f; }
-        .form-group input, .form-group textarea { padding: 12px 12px; border: 1px solid #d1d5db; border-radius: 8px; font-family: inherit; font-size: 12px; transition: border-color 0.2s; }
-        .form-group select { padding: 12px 16px; border: 1px solid #d1d5db; border-radius: 8px; background: #fff; font-family: inherit; font-size: 12px; }
-        .form-group input:focus, .form-group textarea:focus { outline: none; border-color: #043763; box-shadow: 0 0 0 3px rgba(4, 55, 99, 0.1); }
-        .form-group textarea { resize: vertical; min-height: 20px; }
-        .submit-btn { background-color: #043763; color: white; border: none; padding: 14px 24px; border-radius: 8px; font-weight: 600; font-size: 13px; cursor: pointer; transition: all 0.2s; margin-top: 12px; }
+        .contact-form { display: flex; flex-direction: column; gap: 8px; width: 100%;}
+        .form-group { display: flex; flex-direction: column; gap: 8px; width: 100%; }
+        .form-group label { font-size: 13px; font-weight: 600; color: #1d1d1f; text-align: left; }
+        .form-group input, .form-group textarea { padding: 12px 12px; border: 1px solid #d1d5db; border-radius: 8px; font-family: inherit; font-size: 14px; transition: border-color 0.2s; width: 100%; }
+        .form-group select { padding: 12px 16px; border: 1px solid #d1d5db; border-radius: 8px; background: #fff; font-family: inherit; font-size: 14px; width: 100%; }
+        .form-group input:focus, .form-group textarea:focus { outline: none; border-color: #043763; box-shadow: 0 0 0 3px rgba(4, 55, 99, 0.08); }
+        .form-group textarea { resize: vertical; min-height: 80px; }
+        .submit-btn { background-color: #043763; color: white; border: none; padding: 14px 24px; border-radius: 8px; font-weight: 600; font-size: 15px; cursor: pointer; transition: all 0.2s; margin-top: 12px; width: auto; }
         .submit-btn:hover { background-color: #0a4d8c; transform: translateY(-2px); }
         @keyframes slideUp { from { opacity: 0; transform: translateY(20px);} to { opacity: 1; transform: translateY(0);} }
-        .contact-modal-close { position: absolute; top: 10px; right: 20px; background: none; border: none; font-size: 28px; cursor: pointer; color: #6b7280; padding: 8px; display: flex; align-items: center; justify-content: center; z-index: 10; pointer-events: auto; }
+        .contact-modal-close { position: absolute; top: 10px; right: 20px; background: none; border: none; font-size: 28px; cursor: pointer; color: #6b7280; padding: 10px; display: flex; align-items: center; justify-content: center; z-index: 10; pointer-events: auto; }
         .contact-modal-close:hover { color: #1d1d1f; }
-        .contact-modal h2 { font-size: 34px; font-weight: 600; margin: 0 0 24px 0; color: #1d1d1f; }
-        .contact-info-section { margin-bottom: 32px; }
-        .contact-info-section h3 { font-size: 14px; font-weight: 600; color: #6b7280; text-transform: uppercase; letter-spacing: 0.5px; margin: 0 0 14px 0; }
-        .contact-info-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 16px; color: #374151; font-size: 15px; line-height: 1.6; }
+        .contact-modal h2 { font-size: 28px; font-weight: 600; margin: 0 0 18px 0; color: #1d1d1f; }
+        .contact-info-section { margin-bottom: 24px; }
+        .contact-info-section h3 { font-size: 13px; font-weight: 600; color: #6b7280; text-transform: uppercase; letter-spacing: 0.5px; margin: 0 0 12px 0; }
+        .contact-info-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px; color: #374151; font-size: 15px; line-height: 1.6; }
         .contact-info-icon { flex-shrink: 0; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; margin-top: 2px; }
         .contact-info-icon svg { width: 18px; height: 18px; stroke: #0A4D8C; stroke-width: 2; }
-        @media (max-width: 768px) { .contact-modal-content { padding: 32px 24px; max-width: 95%; width: 95%; } .contact-modal h2 { font-size: 24px; } .contact-modal-close { top: 16px; right: 16px; } .contact-modal-front, .contact-modal-back { padding: 20px 16px; padding-top: 10px; } .form-group input, .form-group textarea { padding: 10px 12px; font-size: 14px; } }
+
+        /* Small screens: turn into bottom sheet with full width and scrollable content */
+        @media (max-width: 520px) {
+          .contact-modal { align-items: flex-end; padding: 0; }
+          .contact-modal.active { padding-bottom: env(safe-area-inset-bottom); }
+          .contact-modal-content {
+            width: 100%;
+            max-width: 100%;
+            max-height: 92vh;
+            height: auto;
+            border-radius: 12px 12px 0 0;
+            padding: 16px;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+          }
+          .contact-modal-content::before { display: block; content: ''; width: 36px; height: 4px; background: #e5e7eb; border-radius: 999px; margin: 6px auto 12px; }
+          .contact-modal h2 { font-size: 20px; }
+          .contact-modal-close { top: 8px; right: 12px; font-size: 26px; padding: 12px; }
+          .send-message-btn, .submit-btn { width: 100%; min-width: 0; padding: 12px; font-size: 15px; }
+          .contact-modal-front, .contact-modal-back { padding: 12px; gap: 12px; align-items: stretch; text-align: left; }
+          .form-group label { font-size: 13px; }
+        }
+
+        /* Medium screens */
+        @media (max-width: 768px) {
+          .contact-modal-content { padding: 24px; width: calc(100% - 48px); max-width: 560px; }
+          .contact-modal h2 { font-size: 22px; }
+          .contact-modal-front, .contact-modal-back { padding: 20px; }
+          .form-group input, .form-group textarea { padding: 10px 12px; font-size: 14px; }
+        }
       </style>
 
       <div class="contact-modal" part="overlay">
-        <div class="contact-modal-content" part="content">
-          <button class="contact-modal-close" part="close">&times;</button>
+        <div class="contact-modal-content" part="content" role="dialog" aria-modal="true" aria-labelledby="contact-title-front">
+          <button class="contact-modal-close" part="close" aria-label="Close contact dialog">&times;</button>
           <div class="contact-modal-flipper" part="flipper">
             <div class="contact-modal-front" part="front">
-              <h2>Get In Touch</h2>
+              <h2 id="contact-title-front">Get In Touch</h2>
               <p style="color:#374151;line-height:1.6;margin-top:12px;margin-bottom:18px;">Submit the initial scope questionnaire. The Cardona Strategy team will review your response and coordinate next steps.</p>
               <button id="messageBtn" class="send-message-btn">Send us a Message</button>
             </div>
 
             <div class="contact-modal-back" part="back">
-              <h2>Send us a Message!</h2>
+              <h2 id="contact-title-back">Send us a Message!</h2>
               <form id="contactForm" class="contact-form" novalidate>
                 <div class="form-group">
                   <label for="companyInput">Company name</label>
@@ -208,6 +242,8 @@ class ContactModal extends HTMLElement {
         // re-apply after a short tick to guard against other layout changes that might override it
         setTimeout(() => { this._content.style.height = backHeight + 'px'; }, 40);
         this._content.removeEventListener('transitionend', onTransitionEnd);
+        // Update dialog labeling to the back title and focus the first control
+        this._content.setAttribute('aria-labelledby', 'contact-title-back');
         back.querySelector('#companyInput')?.focus();
       }
     };
@@ -286,6 +322,9 @@ class ContactModal extends HTMLElement {
       this._content.style.height = h + 'px';
     }
 
+    // ensure dialog labeling points to the visible front heading for screen readers
+    this._content.setAttribute('aria-labelledby', 'contact-title-front');
+
     // also set back height if the back content is taller so the container can expand smoothly
     const back = this._content.querySelector('.contact-modal-back');
     if (back) {
@@ -329,6 +368,8 @@ class ContactModal extends HTMLElement {
     this._flipper.classList.remove('flipped');
     document.body.style.overflow = 'auto';
     this._form.reset();
+    // ensure dialog labels point back to the front heading
+    this._content.setAttribute('aria-labelledby', 'contact-title-front');
     // clear any pending timers
     if (this._openResetTimer) {
       clearTimeout(this._openResetTimer);
