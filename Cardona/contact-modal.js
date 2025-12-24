@@ -14,99 +14,81 @@ class ContactModal extends HTMLElement {
           z-index: 1000;
           align-items: center;
           justify-content: center;
-          padding: 16px;
-          -webkit-overflow-scrolling: touch;
           font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+          padding: 16px;
         }
         .contact-modal.active { display: flex; }
         .contact-modal-content {
           background: #ffffff;
-          border-radius: 16px;
-          max-width: 620px;
-          width: min(620px, calc(100% - 32px));
-          max-height: 96vh;
+          border-radius: 12px;
+          max-width: 420px;
+          width: calc(100% - 40px);
+          max-height: 90vh;
           height: auto;
-          overflow: hidden;
-          box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+          overflow-y: auto;
+          -webkit-overflow-scrolling: touch;
+          box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
           animation: slideUp 0.28s ease-out;
           transition: height 0.28s ease;
           position: relative;
-          padding: 28px;
-          display: flex;
-          flex-direction: column;
+          padding: 20px;
         }
-        .contact-modal-content::before { display: none; content: ''; }
-        .contact-modal-flipper { position: relative; width: 100%; transition: transform 0.6s; transform-style: preserve-3d; transform-origin: center; }
+        .contact-modal-flipper { position: relative; width: 100%; transition: transform 0.6s; transform-style: preserve-3d; }
         .contact-modal-flipper.flipped { transform: rotateY(180deg); }
-        .contact-modal-front, .contact-modal-back { padding: 28px; width: 100%; backface-visibility: hidden; display: flex; flex-direction: column; gap: 16px; align-items: center; text-align: center; }
+        .contact-modal-front, .contact-modal-back { padding: 20px; width: 100%; backface-visibility: hidden; display: flex; flex-direction: column; gap: 12px; align-items: stretch; text-align: left; }
         .contact-modal-back { transform: rotateY(180deg); position: absolute; top: 0; left: 0; width: 100%; }
-        .send-message-btn { min-width: 240px; width: auto; align-self: center; background-color: #043763; color: white; border: none; padding: 14px 28px; border-radius: 8px; font-weight: 600; font-size: 15px; cursor: pointer; margin-top: 12px; transition: all 0.2s; }
+        .send-message-btn { min-width: 180px; width: auto; align-self: flex-start; background-color: #043763; color: white; border: none; padding: 12px 20px; border-radius: 8px; font-weight: 600; font-size: 14px; cursor: pointer; margin-top: 8px; transition: all 0.16s; }
         .send-message-btn:hover { background-color: #0a4d8c; transform: translateY(-2px); }
-        .contact-form { display: flex; flex-direction: column; gap: 8px; width: 100%;}
-        .form-group { display: flex; flex-direction: column; gap: 8px; width: 100%; }
-        .form-group label { font-size: 13px; font-weight: 600; color: #1d1d1f; text-align: left; }
-        .form-group input, .form-group textarea { padding: 12px 12px; border: 1px solid #d1d5db; border-radius: 8px; font-family: inherit; font-size: 14px; transition: border-color 0.2s; width: 100%; }
-        .form-group select { padding: 12px 16px; border: 1px solid #d1d5db; border-radius: 8px; background: #fff; font-family: inherit; font-size: 14px; width: 100%; }
-        .form-group input:focus, .form-group textarea:focus { outline: none; border-color: #043763; box-shadow: 0 0 0 3px rgba(4, 55, 99, 0.08); }
+        .contact-form { display: flex; flex-direction: column; gap: 10px; width: 100%;}
+        .form-group { display: flex; flex-direction: column; gap: 6px; }
+        .form-group label { font-size: 12px; font-weight: 600; color: #1d1d1f; }
+        .form-group input, .form-group textarea { padding: 10px 12px; border: 1px solid #d1d5db; border-radius: 8px; font-family: inherit; font-size: 14px; transition: border-color 0.2s; }
+        .form-group select { padding: 10px 12px; border: 1px solid #d1d5db; border-radius: 8px; background: #fff; font-family: inherit; font-size: 14px; }
+        .form-group input:focus, .form-group textarea:focus { outline: none; border-color: #043763; box-shadow: 0 0 0 3px rgba(4, 55, 99, 0.06); }
         .form-group textarea { resize: vertical; min-height: 80px; }
-        .submit-btn { background-color: #043763; color: white; border: none; padding: 14px 24px; border-radius: 8px; font-weight: 600; font-size: 15px; cursor: pointer; transition: all 0.2s; margin-top: 12px; width: auto; }
+        .submit-btn { background-color: #043763; color: white; border: none; padding: 12px 20px; border-radius: 8px; font-weight: 600; font-size: 14px; cursor: pointer; transition: all 0.16s; margin-top: 8px; width: 100%; }
         .submit-btn:hover { background-color: #0a4d8c; transform: translateY(-2px); }
         @keyframes slideUp { from { opacity: 0; transform: translateY(20px);} to { opacity: 1; transform: translateY(0);} }
-        .contact-modal-close { position: absolute; top: 10px; right: 20px; background: none; border: none; font-size: 28px; cursor: pointer; color: #6b7280; padding: 10px; display: flex; align-items: center; justify-content: center; z-index: 10; pointer-events: auto; }
+        .contact-modal-close { position: absolute; top: 10px; right: 14px; background: none; border: none; font-size: 22px; cursor: pointer; color: #6b7280; padding: 6px; display: flex; align-items: center; justify-content: center; z-index: 10; pointer-events: auto; }
         .contact-modal-close:hover { color: #1d1d1f; }
-        .contact-modal h2 { font-size: 28px; font-weight: 600; margin: 0 0 18px 0; color: #1d1d1f; }
+        .contact-modal h2 { font-size: 28px; font-weight: 600; margin: 0 0 18px 0; color: #1d1d1f; text-align: left; }
         .contact-info-section { margin-bottom: 24px; }
         .contact-info-section h3 { font-size: 13px; font-weight: 600; color: #6b7280; text-transform: uppercase; letter-spacing: 0.5px; margin: 0 0 12px 0; }
-        .contact-info-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px; color: #374151; font-size: 15px; line-height: 1.6; }
+        .contact-info-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px; color: #374151; font-size: 14px; line-height: 1.5; }
         .contact-info-icon { flex-shrink: 0; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; margin-top: 2px; }
         .contact-info-icon svg { width: 18px; height: 18px; stroke: #0A4D8C; stroke-width: 2; }
 
-        /* Small screens: turn into bottom sheet with full width and scrollable content */
-        @media (max-width: 520px) {
-          .contact-modal { align-items: flex-end; padding: 0; }
-          .contact-modal.active { padding-bottom: env(safe-area-inset-bottom); }
-          .contact-modal-content {
-            width: 100%;
-            max-width: 100%;
-            max-height: 92vh;
-            height: auto;
-            border-radius: 12px 12px 0 0;
-            padding: 12px;
-            overflow-y: hidden; /* controlled dynamically when needed */
-            -webkit-overflow-scrolling: touch;
-          }
-          .contact-modal-content::before { display: block; content: ''; width: 36px; height: 4px; background: #e5e7eb; border-radius: 999px; margin: 6px auto 10px; }
-          .contact-modal h2 { font-size: 18px; margin-bottom: 8px; }
-          .contact-modal-close { top: 8px; right: 12px; font-size: 24px; padding: 10px; }
-          .send-message-btn, .submit-btn { width: 100%; min-width: 0; padding: 10px; font-size: 15px; border-radius: 10px; }
-          .contact-modal-front, .contact-modal-back { padding: 10px; gap: 10px; align-items: stretch; text-align: left; }
-          .form-group { gap: 6px; }
-          .form-group label { font-size: 12px; }
-          .form-group input, .form-group textarea, .form-group select { font-size: 14px; padding: 10px; }
-          .form-group textarea { min-height: 64px; }
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+          .contact-modal-content { padding: 18px; max-width: 380px; width: calc(100% - 28px); max-height: 82vh; border-radius: 12px; }
+          .contact-modal h2 { font-size: 22px; }
+          .contact-modal-close { top: 12px; right: 12px; font-size: 20px; }
+          .contact-modal-front, .contact-modal-back { padding: 12px; padding-top: 8px; }
+          .form-group input, .form-group textarea { padding: 10px 12px; font-size: 14px; }
+          .send-message-btn { width: 100%; align-self: stretch; min-width: 0; }
+          .submit-btn { padding: 12px; font-size: 14px; }
         }
 
-        /* Medium screens */
-        @media (max-width: 768px) {
-          .contact-modal-content { padding: 24px; width: calc(100% - 48px); max-width: 560px; }
-          .contact-modal h2 { font-size: 22px; }
-          .contact-modal-front, .contact-modal-back { padding: 20px; }
-          .form-group input, .form-group textarea { padding: 10px 12px; font-size: 14px; }
+        @media (max-width: 420px) {
+          .contact-modal-content { max-width: 340px; width: calc(100% - 24px); padding: 14px; border-radius: 10px; max-height: 80vh; }
+          .contact-modal h2 { font-size: 20px; }
+          .contact-modal-close { font-size: 18px; top: 10px; right: 10px; }
+          .form-group textarea { min-height: 72px; }
         }
-      </style>
+      </style> 
 
       <div class="contact-modal" part="overlay">
-        <div class="contact-modal-content" part="content" role="dialog" aria-modal="true" aria-labelledby="contact-title-front">
-          <button class="contact-modal-close" part="close" aria-label="Close contact dialog">&times;</button>
+        <div class="contact-modal-content" part="content">
+          <button class="contact-modal-close" part="close">&times;</button>
           <div class="contact-modal-flipper" part="flipper">
             <div class="contact-modal-front" part="front">
-              <h2 id="contact-title-front">Get In Touch</h2>
+              <h2>Get In Touch</h2>
               <p style="color:#374151;line-height:1.6;margin-top:12px;margin-bottom:18px;">Submit the initial scope questionnaire. The Cardona Strategy team will review your response and coordinate next steps.</p>
               <button id="messageBtn" class="send-message-btn">Send us a Message</button>
             </div>
 
             <div class="contact-modal-back" part="back">
-              <h2 id="contact-title-back">Send us a Message!</h2>
+              <h2>Send us a Message!</h2>
               <form id="contactForm" class="contact-form" novalidate>
                 <div class="form-group">
                   <label for="companyInput">Company name</label>
@@ -161,7 +143,7 @@ class ContactModal extends HTMLElement {
 
                 <div class="form-group">
                   <label for="challengeInput">Challenge details</label>
-                  <textarea id="challengeInput" name="challenge" required placeholder="Describe the challenge or scope..." rows="4" aria-required="true"></textarea>
+                  <textarea id="challengeInput" name="challenge" required placeholder="Describe the challenge or scope..." rows="5" aria-required="true"></textarea>
                 </div>
 
                 <button type="submit" class="submit-btn">Send Message</button>
@@ -218,22 +200,21 @@ class ContactModal extends HTMLElement {
       return;
     }
 
-    const paddingBuffer = 28; // include padding
-    const maxVisible = Math.floor(window.innerHeight * 0.92); // match CSS max-height behavior
-    const frontHeightRaw = Math.ceil(front.scrollHeight) + paddingBuffer;
-    const backHeightRaw = Math.ceil(back.scrollHeight) + paddingBuffer;
-    const frontHeight = Math.min(frontHeightRaw, maxVisible);
-    let backHeight = Math.min(backHeightRaw, maxVisible);
-
-    // if back content exceeds viewport, enable inner scrolling so all inputs can be reached
-    if (backHeightRaw > maxVisible) {
-      this._content.style.overflowY = 'auto';
-    } else {
-      this._content.style.overflowY = 'hidden';
-    }
+    // compute natural heights and cap to viewport so the modal doesn't exceed screen on small devices
+    const maxAllowed = Math.max(200, Math.floor(window.innerHeight * 0.82));
+    let frontHeight = Math.min(Math.ceil(front.scrollHeight) + 28, maxAllowed); // include padding
+    let backHeight = Math.min(Math.ceil(back.scrollHeight) + 28, maxAllowed);
 
     // store for resize handling
     this._backHeight = backHeight;
+
+    // if we've capped height, allow internal scrolling
+    if (backHeight >= maxAllowed) {
+      this._content.style.overflowY = 'auto';
+      this._content.style.webkitOverflowScrolling = 'touch';
+    } else {
+      this._content.style.overflowY = 'visible';
+    }
 
     // clear any pending open reset so it doesn't interfere with the flip animation
     if (this._openResetTimer) {
@@ -256,8 +237,6 @@ class ContactModal extends HTMLElement {
         // re-apply after a short tick to guard against other layout changes that might override it
         setTimeout(() => { this._content.style.height = backHeight + 'px'; }, 40);
         this._content.removeEventListener('transitionend', onTransitionEnd);
-        // Update dialog labeling to the back title and focus the first control
-        this._content.setAttribute('aria-labelledby', 'contact-title-back');
         back.querySelector('#companyInput')?.focus();
       }
     };
@@ -332,22 +311,23 @@ class ContactModal extends HTMLElement {
     // ensure front side sizing is used when opening
     const front = this._content.querySelector('.contact-modal-front');
     if (front) {
-      const h = Math.ceil(front.scrollHeight) + 28;
+      const maxAllowed = Math.max(200, Math.floor(window.innerHeight * 0.82));
+      const h = Math.min(Math.ceil(front.scrollHeight) + 28, maxAllowed);
       this._content.style.height = h + 'px';
+      // enable internal scroll if front was capped
+      if (h >= maxAllowed) {
+        this._content.style.overflowY = 'auto';
+        this._content.style.webkitOverflowScrolling = 'touch';
+      } else {
+        this._content.style.overflowY = 'visible';
+      }
     }
-
-    // ensure dialog labeling points to the visible front heading for screen readers
-    this._content.setAttribute('aria-labelledby', 'contact-title-front');
 
     // also set back height if the back content is taller so the container can expand smoothly
     const back = this._content.querySelector('.contact-modal-back');
     if (back) {
-      const paddingBuffer = 28;
-      const backRaw = Math.ceil(back.scrollHeight) + paddingBuffer;
-      const maxVisible = Math.floor(window.innerHeight * 0.92);
-      this._backHeight = Math.min(backRaw, maxVisible);
-      // set inner overflow only if content is taller than allowed viewport area
-      this._content.style.overflowY = backRaw > maxVisible ? 'auto' : 'hidden';
+      const maxAllowed = Math.max(200, Math.floor(window.innerHeight * 0.82));
+      this._backHeight = Math.min(Math.ceil(back.scrollHeight) + 28, maxAllowed);
     }
 
     // reset height to auto after opening transition so layout can adapt
@@ -364,27 +344,24 @@ class ContactModal extends HTMLElement {
     const front = this._content.querySelector('.contact-modal-front');
     const back = this._content.querySelector('.contact-modal-back');
 
-    const paddingBuffer = 28;
-    const maxVisible = Math.floor(window.innerHeight * 0.92);
-    const frontHeightRaw = front ? Math.ceil(front.scrollHeight) + paddingBuffer : 0;
-    const backHeightRaw = back ? Math.ceil(back.scrollHeight) + paddingBuffer : 0;
-    const frontHeight = Math.min(frontHeightRaw, maxVisible);
-    const backHeight = Math.min(backHeightRaw, maxVisible);
+    const maxAllowed = Math.max(200, Math.floor(window.innerHeight * 0.82));
+    const frontHeight = front ? Math.min(Math.ceil(front.scrollHeight) + 28, maxAllowed) : 0;
+    const backHeight = back ? Math.min(Math.ceil(back.scrollHeight) + 28, maxAllowed) : 0;
     this._backHeight = backHeight;
-
-    // toggle inner overflow when content exceeds allowed viewport height
-    this._content.style.overflowY = backHeightRaw > maxVisible ? 'auto' : 'hidden';
 
     if (this._flipper.classList.contains('flipped')) {
       // if showing the back, ensure the container matches the back height
       this._content.style.height = backHeight + 'px';
+      this._content.style.overflowY = backHeight >= maxAllowed ? 'auto' : 'visible';
     } else {
       // if showing the front, let it size naturally unless an explicit height was set
       // keep the current explicit front height if present, otherwise set to auto
       if (this._content.style.height) {
         this._content.style.height = frontHeight + 'px';
+        this._content.style.overflowY = frontHeight >= maxAllowed ? 'auto' : 'visible';
       } else {
         this._content.style.height = 'auto';
+        this._content.style.overflowY = 'visible';
       }
     }
   }
@@ -394,15 +371,14 @@ class ContactModal extends HTMLElement {
     this._flipper.classList.remove('flipped');
     document.body.style.overflow = 'auto';
     this._form.reset();
-    // ensure dialog labels point back to the front heading
-    this._content.setAttribute('aria-labelledby', 'contact-title-front');
     // clear any pending timers
     if (this._openResetTimer) {
       clearTimeout(this._openResetTimer);
       this._openResetTimer = null;
     }
-    // reset any explicit height so the next open will size correctly
+    // reset any explicit height and overflow so the next open will size correctly
     this._content.style.height = 'auto';
+    this._content.style.overflowY = 'visible';
   }
 }
 
