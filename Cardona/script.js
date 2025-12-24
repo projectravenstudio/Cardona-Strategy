@@ -3,87 +3,20 @@ document.addEventListener('DOMContentLoaded', function () {
     const SIDEBAR_KEY = 'cordona_sidebar_expanded';
 
     function openContactModal() {
-      const modal = document.getElementById('contactModal');
-      if (modal) {
+      const cmp = document.querySelector('contact-modal');
+      if (cmp && typeof cmp.open === 'function') {
         if (window.innerWidth <= 1024 && document.body.classList.contains('sidebar-expanded')) {
           closeSidebar();
         }
-        modal.classList.add('active');
-        document.body.style.overflow = 'hidden';
+        cmp.open();
       }
     }
 
     function closeContactModal() {
-      const modal = document.getElementById('contactModal');
-      if (modal) {
-        modal.classList.remove('active');
-        document.body.style.overflow = 'auto';
-
-        const flipper = modal.querySelector('.contact-modal-flipper');
-        if (flipper) {
-          flipper.classList.remove('flipped');
-        }
-
-        const form = document.getElementById('contactForm');
-        if (form) form.reset();
+      const cmp = document.querySelector('contact-modal');
+      if (cmp && typeof cmp.close === 'function') {
+        cmp.close();
       }
-    }
-
-    const flipper = document.querySelector('.contact-modal-flipper');
-    
-    document.getElementById('messageBtn')?.addEventListener('click', () => {
-      flipper?.classList.add('flipped');
-    });
-
-    document.getElementById('backBtn')?.addEventListener('click', () => {
-      flipper?.classList.remove('flipped');
-    });
-
-    const contactForm = document.getElementById('contactForm');
-    if (contactForm) {
-      contactForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-
-        const name = document.getElementById('nameInput').value;
-        const email = document.getElementById('emailInput').value;
-        const message = document.getElementById('messageInput').value;
-
-        try {
-          const response = await fetch('https://formspree.io/f/mgegqpvq', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              name: name,
-              email: email,
-              message: message,
-              _subject: `New message from ${name}`,
-              _replyto: email
-            })
-          });
-
-          if (response.ok) {
-            alert('Message sent successfully! We\'ll get back to you soon.');
-            contactForm.reset();
-            closeContactModal();
-          } else {
-            alert('Failed to send message. Please try again.');
-          }
-        } catch (error) {
-          console.error('Error sending message:', error);
-          alert('Error sending message. Please try again.');
-        }
-      });
-    }
-
-    const modal = document.getElementById('contactModal');
-    if (modal) {
-      modal.addEventListener('click', (e) => {
-        if (e.target === modal || e.target.classList.contains('contact-modal-close')) {
-          closeContactModal();
-        }
-      });
     }
 
     function setLocalStorage(key, value) {
