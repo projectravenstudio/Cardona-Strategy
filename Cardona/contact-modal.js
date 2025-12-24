@@ -20,26 +20,28 @@ class ContactModal extends HTMLElement {
         .contact-modal-content {
           background: #ffffff;
           border-radius: 16px;
-          max-width: 450px;
-          max-height: 450px;
-          width: 50%;
-          height: 90%;
+          max-width: 440px;
+          width: calc(100% - 48px);
+          max-height: 95vh;
+          height: auto;
           overflow: hidden;
           box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
           animation: slideUp 0.3s ease-out;
+          transition: height 0.28s ease;
           position: relative;
-          padding-top: 20px;
+          padding: 28px;
         }
-        .contact-modal-flipper { position: relative; width: 100%; height: 100%; transition: transform 0.6s; transform-style: preserve-3d; }
+        .contact-modal-flipper { position: relative; width: 100%; transition: transform 0.6s; transform-style: preserve-3d; }
         .contact-modal-flipper.flipped { transform: rotateY(180deg); }
-        .contact-modal-front, .contact-modal-back { padding: 28px; padding-top: 10px; padding-bottom: 10px; width: 100%; backface-visibility: hidden; align-items: center; }
-        .contact-modal-back { transform: rotateY(180deg); position: absolute; top: 0; left: 0; }
-        .send-message-btn { width: 100%; background-color: #043763; color: white; border: none; padding: 14px 24px; border-radius: 8px; font-weight: 600; font-size: 15px; cursor: pointer; margin-top: 26px; transition: all 0.2s; }
+        .contact-modal-front, .contact-modal-back { padding: 28px; width: 100%; backface-visibility: hidden; display: flex; flex-direction: column; gap: 16px; align-items: center; text-align: center; }
+        .contact-modal-back { transform: rotateY(180deg); position: absolute; top: 0; left: 0; width: 100%; }
+        .send-message-btn { min-width: 240px; width: auto; align-self: center; background-color: #043763; color: white; border: none; padding: 14px 28px; border-radius: 8px; font-weight: 600; font-size: 15px; cursor: pointer; margin-top: 12px; transition: all 0.2s; }
         .send-message-btn:hover { background-color: #0a4d8c; transform: translateY(-2px); }
         .contact-form { display: flex; flex-direction: column; gap: 8px; }
         .form-group { display: flex; flex-direction: column; gap: 8px; }
         .form-group label { font-size: 12px; font-weight: 600; color: #1d1d1f; }
-        .form-group input, .form-group textarea { padding: 12px 16px; border: 1px solid #d1d5db; border-radius: 8px; font-family: inherit; font-size: 12px; transition: border-color 0.2s; }
+        .form-group input, .form-group textarea { padding: 12px 12px; border: 1px solid #d1d5db; border-radius: 8px; font-family: inherit; font-size: 12px; transition: border-color 0.2s; }
+        .form-group select { padding: 12px 16px; border: 1px solid #d1d5db; border-radius: 8px; background: #fff; font-family: inherit; font-size: 12px; }
         .form-group input:focus, .form-group textarea:focus { outline: none; border-color: #043763; box-shadow: 0 0 0 3px rgba(4, 55, 99, 0.1); }
         .form-group textarea { resize: vertical; min-height: 20px; }
         .submit-btn { background-color: #043763; color: white; border: none; padding: 14px 24px; border-radius: 8px; font-weight: 600; font-size: 13px; cursor: pointer; transition: all 0.2s; margin-top: 12px; }
@@ -62,53 +64,67 @@ class ContactModal extends HTMLElement {
           <div class="contact-modal-flipper" part="flipper">
             <div class="contact-modal-front" part="front">
               <h2>Get In Touch</h2>
-              <div class="contact-info-section">
-                <h3>Phone</h3>
-                <div class="contact-info-item">
-                  <div class="contact-info-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                    </svg>
-                  </div>
-                  <div>
-                    +1(626) 692-4925<br/>
-                    <span style="font-size: 13px; color: #9ca3af;">Available Mon-Fri, 9AM-6PM EST</span>
-                  </div>
-                </div>
-              </div>
-              <div class="contact-info-section">
-                <h3>Email</h3>
-                <div class="contact-info-item">
-                  <div class="contact-info-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
-                  </div>
-                  <div>
-                    gaguirre@cardonastrategy.com<br/>
-                    <span style="font-size: 13px; color: #9ca3af;">We'll respond within 24 hours</span>
-                  </div>
-                </div>
-              </div>
+              <p style="color:#374151;line-height:1.6;margin-top:12px;margin-bottom:18px;">Submit the initial scope questionnaire. The Cardona Strategy team will review your response and coordinate next steps.</p>
               <button id="messageBtn" class="send-message-btn">Send us a Message</button>
             </div>
 
             <div class="contact-modal-back" part="back">
               <h2>Send us a Message!</h2>
-              <form id="contactForm" class="contact-form">
+              <form id="contactForm" class="contact-form" novalidate>
                 <div class="form-group">
-                  <label for="nameInput">Enter your name</label>
-                  <input type="text" id="nameInput" name="name" required placeholder="Your name">
+                  <label for="companyInput">Company name</label>
+                  <input type="text" id="companyInput" name="company" required placeholder="Company name" aria-required="true">
                 </div>
 
                 <div class="form-group">
-                  <label for="emailInput">Enter your email</label>
-                  <input type="email" id="emailInput" name="email" required placeholder="your@email.com">
+                  <label for="contactInput">Contact name</label>
+                  <input type="text" id="contactInput" name="contact" required placeholder="Your name" aria-required="true">
                 </div>
 
                 <div class="form-group">
-                  <label for="messageInput">Enter your message</label>
-                  <textarea id="messageInput" name="message" required placeholder="Your message..." rows="4"></textarea>
+                  <label for="phoneInput">Phone number</label>
+                  <input type="tel" id="phoneInput" name="phone" required placeholder="(123) 456-7890" aria-required="true">
+                </div>
+
+                <div class="form-group">
+                  <label for="emailInput">Email</label>
+                  <input type="email" id="emailInput" name="email" required placeholder="your@email.com" aria-required="true">
+                </div>
+
+                <div class="form-group">
+                  <label for="industrySelect">Industry</label>
+                  <select id="industrySelect" name="industry" required aria-required="true">
+                    <option value="">Choose industry</option>
+                    <option>Healthcare</option>
+                    <option>Technology</option>
+                    <option>Government</option>
+                    <option>Construction</option>
+                    <option>Logistics</option>
+                    <option>Hospitality</option>
+                    <option>Energy</option>
+                    <option>Public Safety</option>
+                    <option>Community Impact</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="serviceSelect">Service interest</label>
+                  <select id="serviceSelect" name="service" required aria-required="true">
+                    <option value="">Choose service</option>
+                    <option>Strategy</option>
+                    <option>Brand & Marketing</option>
+                    <option>Capital Funding</option>
+                    <option>Procurement & Operations</option>
+                    <option>Technology & Digital</option>
+                    <option>Community & Stakeholders</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="challengeInput">Challenge details</label>
+                  <textarea id="challengeInput" name="challenge" required placeholder="Describe the challenge or scope..." rows="5" aria-required="true"></textarea>
                 </div>
 
                 <button type="submit" class="submit-btn">Send Message</button>
@@ -121,6 +137,7 @@ class ContactModal extends HTMLElement {
     `;
 
     this._overlay = this._shadow.querySelector('.contact-modal');
+    this._content = this._shadow.querySelector('.contact-modal-content');
     this._flipper = this._shadow.querySelector('.contact-modal-flipper');
     this._messageBtn = this._shadow.getElementById('messageBtn');
     this._form = this._shadow.getElementById('contactForm');
@@ -132,6 +149,7 @@ class ContactModal extends HTMLElement {
     this._onOverlayClick = this._onOverlayClick.bind(this);
     this._onMessageClick = this._onMessageClick.bind(this);
     this._onSubmit = this._onSubmit.bind(this);
+    this._onResize = this._onResize.bind(this);
   }
 
   connectedCallback() {
@@ -139,6 +157,7 @@ class ContactModal extends HTMLElement {
     this._closeBtn.addEventListener('click', this.close);
     this._messageBtn.addEventListener('click', this._onMessageClick);
     this._form.addEventListener('submit', this._onSubmit);
+    window.addEventListener('resize', this._onResize);
   }
 
   disconnectedCallback() {
@@ -146,6 +165,7 @@ class ContactModal extends HTMLElement {
     this._closeBtn.removeEventListener('click', this.close);
     this._messageBtn.removeEventListener('click', this._onMessageClick);
     this._form.removeEventListener('submit', this._onSubmit);
+    window.removeEventListener('resize', this._onResize);
   }
 
   _onOverlayClick(e) {
@@ -153,20 +173,89 @@ class ContactModal extends HTMLElement {
   }
 
   _onMessageClick() {
+    // measure current (front) and next (back) heights and animate container to prevent overlap
+    const front = this._content.querySelector('.contact-modal-front');
+    const back = this._content.querySelector('.contact-modal-back');
+    if (!front || !back) {
+      this._flipper.classList.add('flipped');
+      return;
+    }
+
+    const frontHeight = Math.ceil(front.scrollHeight) + 28; // include padding
+    const backHeight = Math.ceil(back.scrollHeight) + 28;
+
+    // store for resize handling
+    this._backHeight = backHeight;
+
+    // clear any pending open reset so it doesn't interfere with the flip animation
+    if (this._openResetTimer) {
+      clearTimeout(this._openResetTimer);
+      this._openResetTimer = null;
+    }
+
+    // Set explicit height to current front height to start transition
+    this._content.style.height = frontHeight + 'px';
+
+    // Force reflow so the transition starts from the set height
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+    this._content.offsetHeight;
+
+    // listen for transition end to fix height to back height and focus
+    const onTransitionEnd = (e) => {
+      if (e.target === this._content && e.propertyName === 'height') {
+        // Keep the container at the back height so it doesn't revert to front sizing
+        this._content.style.height = backHeight + 'px';
+        // re-apply after a short tick to guard against other layout changes that might override it
+        setTimeout(() => { this._content.style.height = backHeight + 'px'; }, 40);
+        this._content.removeEventListener('transitionend', onTransitionEnd);
+        back.querySelector('#companyInput')?.focus();
+      }
+    };
+
+    this._content.addEventListener('transitionend', onTransitionEnd);
+
+    // trigger flip and animate to back height
     this._flipper.classList.add('flipped');
+    // give the flipper a tick to begin transform then set new height
+    requestAnimationFrame(() => {
+      this._content.style.height = backHeight + 'px';
+    });
   }
+
+
 
   async _onSubmit(e) {
     e.preventDefault();
-    const name = this._form.querySelector('#nameInput').value;
-    const email = this._form.querySelector('#emailInput').value;
-    const message = this._form.querySelector('#messageInput').value;
+
+    // HTML5 validation inside shadow DOM
+    if (!this._form.checkValidity()) {
+      this._form.reportValidity();
+      return;
+    }
+
+    const company = this._form.querySelector('#companyInput').value.trim();
+    const contact = this._form.querySelector('#contactInput').value.trim();
+    const phone = this._form.querySelector('#phoneInput').value.trim();
+    const email = this._form.querySelector('#emailInput').value.trim();
+    const industry = this._form.querySelector('#industrySelect').value;
+    const service = this._form.querySelector('#serviceSelect').value;
+    const challenge = this._form.querySelector('#challengeInput').value.trim();
 
     try {
       const response = await fetch('https://formspree.io/f/mgegqpvq', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, message, _subject: `New message from ${name}`, _replyto: email })
+        body: JSON.stringify({
+          company,
+          contact,
+          phone,
+          email,
+          industry,
+          service,
+          challenge,
+          _subject: `New business inquiry from ${company} / ${contact}`,
+          _replyto: email
+        })
       });
 
       if (response.ok) {
@@ -183,8 +272,56 @@ class ContactModal extends HTMLElement {
   }
 
   open() {
+    // attach to DOM if needed
+    if (!this.isConnected) document.body.appendChild(this);
+
+    // show overlay & prevent body scroll
     this._overlay.classList.add('active');
     document.body.style.overflow = 'hidden';
+
+    // ensure front side sizing is used when opening
+    const front = this._content.querySelector('.contact-modal-front');
+    if (front) {
+      const h = Math.ceil(front.scrollHeight) + 28;
+      this._content.style.height = h + 'px';
+    }
+
+    // also set back height if the back content is taller so the container can expand smoothly
+    const back = this._content.querySelector('.contact-modal-back');
+    if (back) {
+      this._backHeight = Math.ceil(back.scrollHeight) + 28;
+    }
+
+    // reset height to auto after opening transition so layout can adapt
+    if (this._openResetTimer) clearTimeout(this._openResetTimer);
+    this._openResetTimer = setTimeout(() => {
+      // only reset to auto if we're not flipped to back
+      if (!this._flipper.classList.contains('flipped')) this._content.style.height = 'auto';
+      this._openResetTimer = null;
+    }, 350);
+  }
+
+  _onResize() {
+    // Recompute heights on viewport changes and re-apply the correct explicit height
+    const front = this._content.querySelector('.contact-modal-front');
+    const back = this._content.querySelector('.contact-modal-back');
+
+    const frontHeight = front ? Math.ceil(front.scrollHeight) + 28 : 0;
+    const backHeight = back ? Math.ceil(back.scrollHeight) + 28 : 0;
+    this._backHeight = backHeight;
+
+    if (this._flipper.classList.contains('flipped')) {
+      // if showing the back, ensure the container matches the back height
+      this._content.style.height = backHeight + 'px';
+    } else {
+      // if showing the front, let it size naturally unless an explicit height was set
+      // keep the current explicit front height if present, otherwise set to auto
+      if (this._content.style.height) {
+        this._content.style.height = frontHeight + 'px';
+      } else {
+        this._content.style.height = 'auto';
+      }
+    }
   }
 
   close() {
@@ -192,6 +329,13 @@ class ContactModal extends HTMLElement {
     this._flipper.classList.remove('flipped');
     document.body.style.overflow = 'auto';
     this._form.reset();
+    // clear any pending timers
+    if (this._openResetTimer) {
+      clearTimeout(this._openResetTimer);
+      this._openResetTimer = null;
+    }
+    // reset any explicit height so the next open will size correctly
+    this._content.style.height = 'auto';
   }
 }
 
