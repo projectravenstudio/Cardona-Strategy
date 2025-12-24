@@ -9,14 +9,13 @@ body.industries {
   width: 100%;
   background: linear-gradient(135deg, #ffffff 0%, #f5f5f7 100%);
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-  padding-right: 350px;
   padding-bottom: 50px;
   padding-top: 80px;
 }
 
 .industries-header .header-content {
-  max-width: 800px;
-  margin: 0 auto;
+  max-width: 100%;
+  margin: 0;
 }
 
 .industries-header .header-label {
@@ -46,7 +45,7 @@ body.industries {
 }
 
 .industries-section {
-  padding: 0 0;
+  padding: 0;
   background: #ffffff;
 }
 

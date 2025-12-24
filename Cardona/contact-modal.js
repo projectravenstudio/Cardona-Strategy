@@ -32,12 +32,13 @@ class ContactModal extends HTMLElement {
           transition: height 0.28s ease;
           position: relative;
           padding: 20px;
+          align-items: center;
         }
         .contact-modal-flipper { position: relative; width: 100%; transition: transform 0.6s; transform-style: preserve-3d; }
         .contact-modal-flipper.flipped { transform: rotateY(180deg); }
-        .contact-modal-front, .contact-modal-back { padding: 20px; width: 100%; backface-visibility: hidden; display: flex; flex-direction: column; gap: 12px; align-items: stretch; text-align: left; }
+        .contact-modal-front, .contact-modal-back { padding: 20px; width: 100%; backface-visibility: hidden; display: flex; flex-direction: column; gap: 12px; align-items: center; text-align: left; }
         .contact-modal-back { transform: rotateY(180deg); position: absolute; top: 0; left: 0; width: 100%; }
-        .send-message-btn { min-width: 180px; width: auto; align-self: flex-start; background-color: #043763; color: white; border: none; padding: 12px 20px; border-radius: 8px; font-weight: 600; font-size: 14px; cursor: pointer; margin-top: 8px; transition: all 0.16s; }
+        .send-message-btn { min-width: 180px; width: auto; align-self: center; background-color: #043763; color: white; border: none; padding: 12px 20px; border-radius: 8px; font-weight: 600; font-size: 14px; cursor: pointer; margin-top: 8px; transition: all 0.16s; }
         .send-message-btn:hover { background-color: #0a4d8c; transform: translateY(-2px); }
         .contact-form { display: flex; flex-direction: column; gap: 10px; width: 100%;}
         .form-group { display: flex; flex-direction: column; gap: 6px; }
@@ -46,12 +47,12 @@ class ContactModal extends HTMLElement {
         .form-group select { padding: 10px 12px; border: 1px solid #d1d5db; border-radius: 8px; background: #fff; font-family: inherit; font-size: 14px; }
         .form-group input:focus, .form-group textarea:focus { outline: none; border-color: #043763; box-shadow: 0 0 0 3px rgba(4, 55, 99, 0.06); }
         .form-group textarea { resize: vertical; min-height: 80px; }
-        .submit-btn { background-color: #043763; color: white; border: none; padding: 12px 20px; border-radius: 8px; font-weight: 600; font-size: 14px; cursor: pointer; transition: all 0.16s; margin-top: 8px; width: 100%; }
+        .submit-btn { background-color: #043763; color: white; border: none; padding: 12px 10px; border-radius: 8px; font-weight: 600; font-size: 14px; cursor: pointer; transition: all 0.16s; margin-top: 8px; width: 100%; }
         .submit-btn:hover { background-color: #0a4d8c; transform: translateY(-2px); }
         @keyframes slideUp { from { opacity: 0; transform: translateY(20px);} to { opacity: 1; transform: translateY(0);} }
         .contact-modal-close { position: absolute; top: 10px; right: 14px; background: none; border: none; font-size: 22px; cursor: pointer; color: #6b7280; padding: 6px; display: flex; align-items: center; justify-content: center; z-index: 10; pointer-events: auto; }
         .contact-modal-close:hover { color: #1d1d1f; }
-        .contact-modal h2 { font-size: 28px; font-weight: 600; margin: 0 0 18px 0; color: #1d1d1f; text-align: left; }
+        .contact-modal h2 { font-size: 28px; font-weight: 600; margin: 0; color: #1d1d1f; text-align: left; }
         .contact-info-section { margin-bottom: 24px; }
         .contact-info-section h3 { font-size: 13px; font-weight: 600; color: #6b7280; text-transform: uppercase; letter-spacing: 0.5px; margin: 0 0 12px 0; }
         .contact-info-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px; color: #374151; font-size: 14px; line-height: 1.5; }
@@ -83,7 +84,7 @@ class ContactModal extends HTMLElement {
           <div class="contact-modal-flipper" part="flipper">
             <div class="contact-modal-front" part="front">
               <h2>Get In Touch</h2>
-              <p style="color:#374151;line-height:1.6;margin-top:12px;margin-bottom:18px;">Submit the initial scope questionnaire. The Cardona Strategy team will review your response and coordinate next steps.</p>
+              <p style="color:#374151;line-height:1.6;margin-bottom:18px; text-align: center;">Submit the initial scope questionnaire. The Cardona Strategy team will review your response and coordinate next steps.</p>
               <button id="messageBtn" class="send-message-btn">Send us a Message</button>
             </div>
 
