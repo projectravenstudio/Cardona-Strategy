@@ -197,53 +197,6 @@
   margin: 0;
 }
 
-.engagements-section {
-  background: #ffffff;
-}
-
-.engagements-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 24px;
-}
-
-.engagement-card {
-  padding: 32px;
-  background: #f5f5f7;
-  border-radius: 16px;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  transition: all 0.3s ease;
-}
-
-.engagement-card:hover {
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.1);
-  transform: translateY(-4px);
-}
-
-.engagement-card h3 {
-  font-size: 18px;
-  font-weight: 600;
-  color: #1d1d1f;
-  margin: 0 0 12px;
-}
-
-.engagement-description {
-  font-size: 14px;
-  color: #86868b;
-  line-height: 1.6;
-  margin: 0 0 16px;
-  padding-bottom: 16px;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-}
-
-.engagement-result {
-  font-size: 15px;
-  font-weight: 600;
-  color: #043763;
-  margin: 0;
-  line-height: 1.6;
-}
-
 .industry-cta-section {
   padding: 120px 0 100px;
   background: #ffffff;
@@ -387,22 +340,6 @@
     font-size: 15px;
   }
 
-  .engagement-card {
-    padding: 28px;
-  }
-
-  .engagement-card h3 {
-    font-size: 16px;
-  }
-
-  .engagement-description {
-    font-size: 13px;
-  }
-
-  .engagement-result {
-    font-size: 14px;
-  }
-
   .industry-cta-section {
     padding: 80px 0 60px;
   }
@@ -484,18 +421,6 @@
     font-size: 14px;
   }
 
-  .engagements-grid {
-    gap: 20px;
-  }
-
-  .engagement-card {
-    padding: 24px;
-  }
-
-  .engagement-card h3 {
-    font-size: 15px;
-  }
-
   .industry-cta-section {
     padding: 60px 0 50px;
   }
@@ -575,25 +500,6 @@
   }
 
   .solution-item p {
-    font-size: 13px;
-  }
-
-  .engagement-card {
-    padding: 20px;
-  }
-
-  .engagement-card h3 {
-    font-size: 14px;
-    margin-bottom: 10px;
-  }
-
-  .engagement-description {
-    font-size: 12px;
-    margin-bottom: 12px;
-    padding-bottom: 12px;
-  }
-
-  .engagement-result {
     font-size: 13px;
   }
 
@@ -680,25 +586,6 @@
   }
 
   .solution-item p {
-    font-size: 12px;
-  }
-
-  .engagement-card {
-    padding: 16px;
-  }
-
-  .engagement-card h3 {
-    font-size: 13px;
-    margin-bottom: 8px;
-  }
-
-  .engagement-description {
-    font-size: 11px;
-    margin-bottom: 10px;
-    padding-bottom: 10px;
-  }
-
-  .engagement-result {
     font-size: 12px;
   }
 
