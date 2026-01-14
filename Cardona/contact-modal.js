@@ -163,7 +163,6 @@ class ContactModal extends HTMLElement {
     this._form = this._shadow.getElementById('contactForm');
     this._closeBtn = this._shadow.querySelector('.contact-modal-close');
 
-    // Bindings
     this.open = this.open.bind(this);
     this.close = this.close.bind(this);
     this._onOverlayClick = this._onOverlayClick.bind(this);
@@ -193,7 +192,6 @@ class ContactModal extends HTMLElement {
   }
 
   _onMessageClick() {
-    // measure current (front) and next (back) heights and animate container to prevent overlap
     const front = this._content.querySelector('.contact-modal-front');
     const back = this._content.querySelector('.contact-modal-back');
     if (!front || !back) {
@@ -201,15 +199,12 @@ class ContactModal extends HTMLElement {
       return;
     }
 
-    // compute natural heights and cap to viewport so the modal doesn't exceed screen on small devices
     const maxAllowed = Math.max(200, Math.floor(window.innerHeight * 0.82));
-    let frontHeight = Math.min(Math.ceil(front.scrollHeight) + 28, maxAllowed); // include padding
+    let frontHeight = Math.min(Math.ceil(front.scrollHeight) + 28, maxAllowed); 
     let backHeight = Math.min(Math.ceil(back.scrollHeight) + 28, maxAllowed);
 
-    // store for resize handling
     this._backHeight = backHeight;
 
-    // if we've capped height, allow internal scrolling
     if (backHeight >= maxAllowed) {
       this._content.style.overflowY = 'auto';
       this._content.style.webkitOverflowScrolling = 'touch';
@@ -217,25 +212,19 @@ class ContactModal extends HTMLElement {
       this._content.style.overflowY = 'visible';
     }
 
-    // clear any pending open reset so it doesn't interfere with the flip animation
     if (this._openResetTimer) {
       clearTimeout(this._openResetTimer);
       this._openResetTimer = null;
     }
 
-    // Set explicit height to current front height to start transition
     this._content.style.height = frontHeight + 'px';
 
-    // Force reflow so the transition starts from the set height
-    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     this._content.offsetHeight;
 
-    // listen for transition end to fix height to back height and focus
     const onTransitionEnd = (e) => {
       if (e.target === this._content && e.propertyName === 'height') {
-        // Keep the container at the back height so it doesn't revert to front sizing
+  
         this._content.style.height = backHeight + 'px';
-        // re-apply after a short tick to guard against other layout changes that might override it
         setTimeout(() => { this._content.style.height = backHeight + 'px'; }, 40);
         this._content.removeEventListener('transitionend', onTransitionEnd);
         back.querySelector('#companyInput')?.focus();
@@ -244,9 +233,7 @@ class ContactModal extends HTMLElement {
 
     this._content.addEventListener('transitionend', onTransitionEnd);
 
-    // trigger flip and animate to back height
     this._flipper.classList.add('flipped');
-    // give the flipper a tick to begin transform then set new height
     requestAnimationFrame(() => {
       this._content.style.height = backHeight + 'px';
     });
@@ -257,7 +244,6 @@ class ContactModal extends HTMLElement {
   async _onSubmit(e) {
     e.preventDefault();
 
-    // HTML5 validation inside shadow DOM
     if (!this._form.checkValidity()) {
       this._form.reportValidity();
       return;
@@ -302,20 +288,16 @@ class ContactModal extends HTMLElement {
   }
 
   open() {
-    // attach to DOM if needed
     if (!this.isConnected) document.body.appendChild(this);
 
-    // show overlay & prevent body scroll
     this._overlay.classList.add('active');
     document.body.style.overflow = 'hidden';
 
-    // ensure front side sizing is used when opening
     const front = this._content.querySelector('.contact-modal-front');
     if (front) {
       const maxAllowed = Math.max(200, Math.floor(window.innerHeight * 0.82));
       const h = Math.min(Math.ceil(front.scrollHeight) + 28, maxAllowed);
       this._content.style.height = h + 'px';
-      // enable internal scroll if front was capped
       if (h >= maxAllowed) {
         this._content.style.overflowY = 'auto';
         this._content.style.webkitOverflowScrolling = 'touch';
@@ -324,24 +306,21 @@ class ContactModal extends HTMLElement {
       }
     }
 
-    // also set back height if the back content is taller so the container can expand smoothly
     const back = this._content.querySelector('.contact-modal-back');
     if (back) {
       const maxAllowed = Math.max(200, Math.floor(window.innerHeight * 0.82));
       this._backHeight = Math.min(Math.ceil(back.scrollHeight) + 28, maxAllowed);
     }
 
-    // reset height to auto after opening transition so layout can adapt
     if (this._openResetTimer) clearTimeout(this._openResetTimer);
     this._openResetTimer = setTimeout(() => {
-      // only reset to auto if we're not flipped to back
+
       if (!this._flipper.classList.contains('flipped')) this._content.style.height = 'auto';
       this._openResetTimer = null;
     }, 350);
   }
 
   _onResize() {
-    // Recompute heights on viewport changes and re-apply the correct explicit height
     const front = this._content.querySelector('.contact-modal-front');
     const back = this._content.querySelector('.contact-modal-back');
 
@@ -351,12 +330,10 @@ class ContactModal extends HTMLElement {
     this._backHeight = backHeight;
 
     if (this._flipper.classList.contains('flipped')) {
-      // if showing the back, ensure the container matches the back height
       this._content.style.height = backHeight + 'px';
       this._content.style.overflowY = backHeight >= maxAllowed ? 'auto' : 'visible';
     } else {
-      // if showing the front, let it size naturally unless an explicit height was set
-      // keep the current explicit front height if present, otherwise set to auto
+
       if (this._content.style.height) {
         this._content.style.height = frontHeight + 'px';
         this._content.style.overflowY = frontHeight >= maxAllowed ? 'auto' : 'visible';
@@ -372,12 +349,10 @@ class ContactModal extends HTMLElement {
     this._flipper.classList.remove('flipped');
     document.body.style.overflow = 'auto';
     this._form.reset();
-    // clear any pending timers
     if (this._openResetTimer) {
       clearTimeout(this._openResetTimer);
       this._openResetTimer = null;
     }
-    // reset any explicit height and overflow so the next open will size correctly
     this._content.style.height = 'auto';
     this._content.style.overflowY = 'visible';
   }
@@ -385,7 +360,6 @@ class ContactModal extends HTMLElement {
 
 customElements.define('contact-modal', ContactModal);
 
-// Backwards compatibility helpers
 window.openContactModal = function() {
   const cmp = document.querySelector('contact-modal');
   if (cmp && typeof cmp.open === 'function') cmp.open();
