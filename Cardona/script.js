@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (isNavigating) return;
 
         const key = btn.getAttribute('data-key');
-        if (key === 'home' || key === 'offerings' || key === 'industries') {
+        if (key === 'home' || key === 'offerings' || key === 'industries' || key === 'local-sled') {
           isNavigating = true;
           e.preventDefault();
           e.stopPropagation();
@@ -100,6 +100,8 @@ document.addEventListener('DOMContentLoaded', function () {
             finalPage = (isInOfferings || isInIndustries) ? '../offerings.html' : 'offerings.html';
           } else if (key === 'industries') {
             finalPage = (isInOfferings || isInIndustries) ? '../industries.html' : 'industries.html';
+          } else if (key === 'local-sled') {
+            finalPage = (isInOfferings || isInIndustries) ? '../local-sled.html' : 'local-sled.html';
           }
 
           if (finalPage) {
@@ -229,6 +231,58 @@ document.addEventListener('DOMContentLoaded', function () {
         closeContactModal();
         closeSidebar();
       }
+    });
+
+    document.querySelectorAll('.community-header').forEach(header => {
+      header.addEventListener('click', function() {
+        const item = this.closest('.community-item');
+        const details = item.querySelector('.community-details');
+        
+        item.classList.toggle('open');
+        
+        if (item.classList.contains('open')) {
+          details.style.display = 'block';
+        } else {
+          details.style.display = 'none';
+        }
+      });
+    });
+
+
+    document.querySelectorAll('.offering-cta .btn-primary').forEach(btn => {
+      if (btn.textContent.includes('Start a Conversation')) {
+        btn.addEventListener('click', openContactModal);
+      }
+    });
+
+    document.querySelectorAll('.region-cta .btn-primary').forEach(btn => {
+      if (btn.textContent.includes('Start a Conversation')) {
+        btn.addEventListener('click', openContactModal);
+      }
+    });
+
+    document.querySelectorAll('.accordion-header').forEach(header => {
+      header.addEventListener('click', function() {
+        const item = this.closest('.accordion-item');
+        const isOpen = item.classList.contains('open');
+
+        document.querySelectorAll('.accordion-item').forEach(accordionItem => {
+          accordionItem.classList.remove('open');
+        });
+        
+        if (!isOpen) {
+          item.classList.add('open');
+        }
+      });
+    });
+
+    document.querySelectorAll('.partner-section .btn-primary').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const sgvModal = document.querySelector('sgv-contact-modal');
+        if (sgvModal && typeof sgvModal.open === 'function') {
+          sgvModal.open();
+        }
+      });
     });
 
     window.openContactModal = openContactModal;

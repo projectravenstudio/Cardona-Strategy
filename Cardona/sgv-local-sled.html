@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Local SLED Initiative - San Gabriel Valley" />
+  <title>San Gabriel Valley — Local SLED Initiative — Cardona Strategy</title>
+  <link rel="icon" type="image/png" href="logo-icon.png" />
+  <link rel="stylesheet" href="./styles.css" />
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style" />
+</head>
+<body class="sgv-local-sled">
+  <script>
+    (function(){ try{ var s = localStorage.getItem('cordona_sidebar_expanded'); if (s === 'true') document.body.classList.add('sidebar-expanded'); }catch(e){} })();
+  </script>
+  <div id="app">
+    <aside class="sidebar" id="sidebar" role="navigation" aria-label="Main Navigation">
+      <div class="sidebar-inner">
+        <div class="sidebar-top">
+          <button class="logo-rail" id="logoRail" aria-label="Cardona Logo" title="Cardona">
+            <div class="logo-container">
+              <div class="logo-image" >
+                <img src="logo-icon.png" alt="Cardona Logo" />
+              </div>
+              <div class="logo-text">
+                Cardona<br/><span>Strategy</span>
+              </div>
+            </div>
+          </button>
+        </div>
+
+        <nav class="sidebar-nav" aria-label="Primary">
+          <ul class="sidebar-menu">
+            <li class="sidebar-menu-item" data-page="home">
+              <button class="sidebar-menu-button" data-key="home" aria-pressed="false">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                  <path d="M3 10.5l9-7.5 9 7.5" />
+                  <path d="M5 9.75V20a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9.75" />
+                  <path d="M10 21v-5a2 2 0 0 1 2-2h0a2 2 0 0 1 2 2v5" />
+                </svg>
+                <span class="text">Home</span>
+              </button>
+            </li>
+
+            <li class="sidebar-menu-item active" data-page="local-sled">
+              <button class="sidebar-menu-button" data-key="local-sled" aria-pressed="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M3 8l9-5 9 5"/>
+                  <path d="M6 11v6M10 11v6M14 11v6M18 11v6"/>
+                  <path d="M3 20h18"/>
+                </svg>
+                <span class="text">Local SLED</span>
+              </button>
+            </li>
+
+            <li class="sidebar-menu-item" data-page="offerings">
+              <button class="sidebar-menu-button" data-key="offerings" aria-pressed="false">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                 <rect x="3" y="7" width="18" height="14" rx="2" stroke="currentColor" stroke-width="2" fill="none"/>
+                 <rect x="9" y="3" width="6" height="4" rx="1" stroke="currentColor" stroke-width="2" fill="none"/>
+                 <line x1="9" y1="7" x2="9" y2="21" stroke="currentColor" stroke-width="1.5"/>
+                 <line x1="15" y1="7" x2="15" y2="21" stroke="currentColor" stroke-width="1.5"/>
+                </svg>
+                <span class="text">Offerings</span>
+              </button>
+            </li>
+            
+            <li class="sidebar-menu-item" data-page="industries">
+              <button class="sidebar-menu-button" data-key="industries" aria-pressed="false">
+               <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+                <rect x="4" y="14" width="6" height="14" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                <rect x="11" y="8" width="10" height="20" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                <ellipse cx="16" cy="24" rx="2" ry="3" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                <line x1="13" y1="14" x2="19" y2="14" stroke="currentColor" stroke-width="1.5"/>
+                <line x1="13" y1="17" x2="19" y2="17" stroke="currentColor" stroke-width="1.5"/>
+                <rect x="22" y="14" width="6" height="14" fill="none" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+                <span class="text">Industries</span>
+              </button>
+            </li>
+          </ul>
+        </nav>
+
+        <div class="sidebar-footer">
+          <button class="contact-rail" id="contactBtn" title="Contact Us">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+              <rect x="4" y="8" width="24" height="16" fill="none" stroke="#FFFFFF" stroke-width="2"/>
+              <line x1="4" y1="8" x2="16" y2="18" stroke="#FFFFFF" stroke-width="2"/>
+              <line x1="28" y1="8" x2="16" y2="18" stroke="#FFFFFF" stroke-width="2"/>
+            </svg>
+            <span class="rail-text">Contact Us</span>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <main role="main">
+      <a href="./local-sled.html" class="back-button">
+        <span>←</span> Back to Local SLED
+      </a>
+
+      <section class="region-hero">
+        <div class="hero-image" style="background-image: url('https://www.sgvtribune.com/wp-content/uploads/2019/07/SGT-L-DINE-STEAMKETTLE-1-1.jpg?w=960s')"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <div class="location-badge">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5z"/>
+            </svg>
+            Southern California
+          </div>
+          <h1>San Gabriel Valley Local SLED Initiative</h1>
+          <p>Serving diverse SGV communities with consulting expertise from professionals who live here, work here, and understand what it takes to deliver results in local government.</p>
+        </div>
+      </section>
+
+      <section class="region-section why-section">
+        <div class="container">
+          <h2>Why the San Gabriel Valley?</h2>
+          <div class="why-content">
+            <p>The San Gabriel Valley is home to <strong style = "color: #1d1d1f;">30 diverse cities</strong> ranging from small, tight-knit communities to mid-sized municipalities with complex service delivery needs.</p>
+            
+            <p>SGV cities share common challenges: balancing development with community character, modernizing aging infrastructure, navigating inter-departmental coordination, managing limited budgets, and responding to evolving resident expectations.</p>
+            
+            <p>Our Local SLED Initiative for the San Gabriel Valley brings <strong style = "color: #1d1d1f;">local professionals who understand these dynamics</strong>—from the culture of your community to the practical realities of municipal operations.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="region-section how-section">
+        <div class="container">
+          <h2>How We Support SGV Cities</h2>
+          <p class="how-intro">Practical consulting services designed for the realities of local government. Click any offering to learn more.</p>
+          
+          <div class="services-accordion">
+            <div class="accordion-item">
+              <button class="accordion-header">
+                <span class="accordion-title">Mayor & Executive Leadership Alignment Retreat</span>
+                <span class="accordion-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="m19 9-7 7-7-7"/>
+                  </svg>
+                </span>
+              </button>
+              <div class="accordion-content">
+                <div style="padding: 20px 28px;">
+                  <p style="font-weight: 600; color: #1d1d1f; margin: 0;">Purpose</p>
+                  <p style="color: #86868b; margin: 0; font-size: 15px;">Create alignment between Mayor, City Council, City Manager, and Department Heads on strategic priorities, governance style, and execution accountability.</p>
+                  
+                  <p style="font-weight: 600; color: #1d1d1f; margin: 0;">Who It's For</p>
+                  <p style="color: #86868b; margin: 0; font-size: 15px;">Newly elected Mayors, City Councils beginning a new term, or City Managers leading organizational change.</p>
+                  
+                  <p style="font-weight: 600; color: #1d1d1f; margin: 0;">What Cities Gain</p>
+                  <p style="color: #86868b; margin: 0; font-size: 15px;">Shared understanding of priorities, clear roles and decision-making frameworks, and a collaborative leadership culture.</p>
+                  
+                  <p style="font-weight: 600; color: #1d1d1f; margin: 0;">What This Looks Like</p>
+                  <p style="color: #86868b; margin: 0; font-size: 15px;">A facilitated half-day or full-day session with structured dialogue, priority-setting exercises, and action planning.</p>
+                  
+                  <p style="font-weight: 600; color: #1d1d1f; margin: 0;">Deliverables</p>
+                  <p style="color: #86868b; margin: 0; font-size: 15px;">Documented strategic priorities, governance charter, and 90-day action roadmap.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button class="accordion-header">
+                <span class="accordion-title">Citywide Strategic Priorities & Action Plan</span>
+                <span class="accordion-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="m19 9-7 7-7-7"/>
+                  </svg>
+                </span>
+              </button>
+              <div class="accordion-content">
+                <div style="padding: 20px 28px;">
+                  <p style="font-weight: 600; color: #1d1d1f; margin: 0;">Purpose</p>
+                  <p style="color: #86868b; margin: 0; font-size: 15px;">Define 3-5 strategic priorities for the city and translate them into actionable initiatives with clear ownership and timelines.</p>
+                  
+                  <p style="font-weight: 600; color: #1d1d1f; margin: 0;">Who It's For</p>
+                  <p style="color: #86868b; margin: 0; font-size: 15px;">City leadership teams looking to move from general vision to executable plans.</p>
+                  
+                  <p style="font-weight: 600; color: #1d1d1f; margin: 0;">What Cities Gain</p>
+                  <p style="color: #86868b; margin: 0; font-size: 15px;">A clear, actionable roadmap that aligns departments, clarifies resource allocation, and sets measurable outcomes.</p>
+                  
+                  <p style="font-weight: 600; color: #1d1d1f; margin: 0;">What This Looks Like</p>
+                  <p style="color: #86868b; margin: 0; font-size: 15px;">Working sessions with City leadership, analysis of existing plans and capacity, and development of a concise strategic action plan.</p>
+                  
+                  <p style="font-weight: 600; color: #1d1d1f; margin: 0;">Deliverables</p>
+                  <p style="color: #86868b; margin: 0; font-size: 15px;">Strategic priorities document, initiative roadmap, success metrics, and communication toolkit.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button class="accordion-header">
+                <span class="accordion-title">Department Operations Improvement (Single Department Focus)</span>
+                <span class="accordion-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="m19 9-7 7-7-7"/>
+                  </svg>
+                </span>
+              </button>
+              <div class="accordion-content">
+                <div style="padding: 20px 28px;">
+                  <p style="font-weight: 600; color: #1d1d1f; margin: 0;">Purpose</p>
+                  <p style="color: #86868b; margin: 0; font-size: 15px;">Improve service delivery, efficiency, or internal workflows within a single department (e.g., Public Works, Community Development, Finance).</p>
+                  
+                  <p style="font-weight: 600; color: #1d1d1f; margin: 0;">Who It's For</p>
+                  <p style="color: #86868b; margin: 0; font-size: 15px;">Department Heads or Assistant City Managers addressing specific operational challenges.</p>
+                  
+                  <p style="font-weight: 600; color: #1d1d1f; margin: 0;">What Cities Gain</p>
+                  <p style="color: #86868b; margin: 0; font-size: 15px;">Faster service delivery, reduced bottlenecks, improved staff morale, and measurable performance improvements.</p>
+                  
+                  <p style="font-weight: 600; color: #1d1d1f; margin: 0;">What This Looks Like</p>
+                  <p style="color: #86868b; margin: 0; font-size: 15px;">Process mapping, staff interviews, data analysis, and iterative implementation support.</p>
+                  
+                  <p style="font-weight: 600; color: #1d1d1f; margin: 0;">Deliverables</p>
+                  <p style="color: #86868b; margin: 0; font-size: 15px;">Current-state assessment, recommended process improvements, implementation plan, and performance dashboard.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button class="accordion-header">
+                <span class="accordion-title">Permitting & Development Process Improvement</span>
+                <span class="accordion-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="m19 9-7 7-7-7"/>
+                  </svg>
+                </span>
+              </button>
+              <div class="accordion-content">
+                <div style="padding: 20px 28px;">
+                  <p style="font-weight: 600; color: #1d1d1f; margin: 0;">Purpose</p>
+                  <p style="color: #86868b; margin: 0; font-size: 15px;">Streamline permitting and development review processes to reduce timelines, improve transparency, and enhance the customer experience.</p>
+                  
+                  <p style="font-weight: 600; color: #1d1d1f; margin: 0;">Who It's For</p>
+                  <p style="color: #86868b; margin: 0; font-size: 15px;">Cities facing development delays, applicant complaints, or inter-departmental coordination challenges.</p>
+                  
+                  <p style="font-weight: 600; color: #1d1d1f; margin: 0;">What Cities Gain</p>
+                  <p style="color: #86868b; margin: 0; font-size: 15px;">Faster permit approvals, clearer applicant guidance, better inter-departmental coordination, and increased development activity.</p>
+                  
+                  <p style="font-weight: 600; color: #1d1d1f; margin: 0;">What This Looks Like</p>
+                  <p style="color: #86868b; margin: 0; font-size: 15px;">Process analysis, stakeholder engagement, technology assessment, and phased implementation roadmap.</p>
+                  
+                  <p style="font-weight: 600; color: #1d1d1f; margin: 0;">Deliverables</p>
+                  <p style="color: #86868b; margin: 0; font-size: 15px;">Process improvement plan, digital tools assessment, applicant communication toolkit, and staff training plan.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button class="accordion-header">
+                <span class="accordion-title">Mayor & City Manager Executive Dashboard</span>
+                <span class="accordion-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="m19 9-7 7-7-7"/>
+                  </svg>
+                </span>
+              </button>
+              <div class="accordion-content">
+                <div style="padding: 20px 28px;">
+                  <p style="font-weight: 600; color: #1d1d1f; margin: 0;">Purpose</p>
+                  <p style="color: #86868b; margin: 0; font-size: 15px;">Provide Mayors and City Managers with a real-time executive dashboard showing key metrics on operations, finances, projects, and community engagement.</p>
+                  
+                  <p style="font-weight: 600; color: #1d1d1f; margin: 0;">Who It's For</p>
+                  <p style="color: #86868b; margin: 0; font-size: 15px;">City leadership seeking better visibility into performance and decision-making support.</p>
+                  
+                  <p style="font-weight: 600; color: #1d1d1f; margin: 0;">What Cities Gain</p>
+                  <p style="color: #86868b; margin: 0; font-size: 15px;">Data-driven decision-making, proactive issue identification, and clear accountability.</p>
+                  
+                  <p style="font-weight: 600; color: #1d1d1f; margin: 0;">What This Looks Like</p>
+                  <p style="color: #86868b; margin: 0; font-size: 15px;">Identifying priority metrics, designing dashboard views, and configuring existing tools or implementing lightweight solutions.</p>
+                  
+                  <p style="font-weight: 600; color: #1d1d1f; margin: 0;">Deliverables</p>
+                  <p style="color: #86868b; margin: 0; font-size: 15px;">Executive dashboard (digital or print format), metrics dictionary, and refresh process.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button class="accordion-header">
+                <span class="accordion-title">Budget Alignment with Council Priorities</span>
+                <span class="accordion-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="m19 9-7 7-7-7"/>
+                  </svg>
+                </span>
+              </button>
+              <div class="accordion-content">
+                <div style="padding: 20px 28px;">
+                  <p style="font-weight: 600; color: #1d1d1f; margin: 0;">Purpose</p>
+                  <p style="color: #86868b; margin: 0; font-size: 15px;">Ensure that budget allocation reflects Council-stated priorities and translate budget decisions into measurable outcomes.</p>
+                  
+                  <p style="font-weight: 600; color: #1d1d1f; margin: 0;">Who It's For</p>
+                  <p style="color: #86868b; margin: 0; font-size: 15px;">City Managers and Finance Directors preparing budget proposals or responding to Council direction.</p>
+                  
+                  <p style="font-weight: 600; color: #1d1d1f; margin: 0;">What Cities Gain</p>
+                  <p style="color: #86868b; margin: 0; font-size: 15px;">A budget narrative that clearly connects spending to priorities, improving Council confidence and public understanding.</p>
+                  
+                  <p style="font-weight: 600; color: #1d1d1f; margin: 0;">What This Looks Like</p>
+                  <p style="color: #86868b; margin: 0; font-size: 15px;">Budget review and mapping sessions, priority-based budgeting framework, and storytelling tools for public engagement.</p>
+                  
+                  <p style="font-weight: 600; color: #1d1d1f; margin: 0;">Deliverables</p>
+                  <p style="color: #86868b; margin: 0; font-size: 15px;">Priority-aligned budget framework, budget narrative, and Council presentation materials.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button class="accordion-header">
+                <span class="accordion-title">Inter-City Collaboration & Shared Services Assessment</span>
+                <span class="accordion-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="m19 9-7 7-7-7"/>
+                  </svg>
+                </span>
+              </button>
+              <div class="accordion-content">
+                <div style="padding: 20px 28px;">
+                  <p style="font-weight: 600; color: #1d1d1f; margin: 0;">Purpose</p>
+                  <p style="color: #86868b; margin: 0; font-size: 15px;">Identify opportunities for neighboring cities to collaborate on shared services, joint procurement, or regional initiatives.</p>
+                  
+                  <p style="font-weight: 600; color: #1d1d1f; margin: 0;">Who It's For</p>
+                  <p style="color: #86868b; margin: 0; font-size: 15px;">City Managers exploring cost savings, service improvements, or regional coordination.</p>
+                  
+                  <p style="font-weight: 600; color: #1d1d1f; margin: 0;">What Cities Gain</p>
+                  <p style="color: #86868b; margin: 0; font-size: 15px;">Cost savings, improved service levels, stronger regional relationships, and enhanced capacity.</p>
+                  
+                  <p style="font-weight: 600; color: #1d1d1f; margin: 0;">What This Looks Like</p>
+                  <p style="color: #86868b; margin: 0; font-size: 15px;">Analysis of service delivery models, benchmarking with peer cities, and facilitated collaboration workshops.</p>
+                  
+                  <p style="font-weight: 600; color: #1d1d1f; margin: 0;">Deliverables</p>
+                  <p style="color: #86868b; margin: 0; font-size: 15px;">Shared services feasibility study, partnership framework, and implementation roadmap.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <button class="accordion-header">
+                <span class="accordion-title">Practical Technology Roadmap for Cities</span>
+                <span class="accordion-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="m19 9-7 7-7-7"/>
+                  </svg>
+                </span>
+              </button>
+              <div class="accordion-content">
+                <div style="padding: 20px 28px;">
+                  <p style="font-weight: 600; color: #1d1d1f; margin: 0;">Purpose</p>
+                  <p style="color: #86868b; margin: 0; font-size: 15px;">Develop a realistic, budget-conscious technology roadmap that improves service delivery without requiring massive capital investment.</p>
+                  
+                  <p style="font-weight: 600; color: #1d1d1f; margin: 0;">Who It's For</p>
+                  <p style="color: #86868b; margin: 0; font-size: 15px;">Cities looking to modernize operations but lacking dedicated IT leadership or large technology budgets.</p>
+                  
+                  <p style="font-weight: 600; color: #1d1d1f; margin: 0;">What Cities Gain</p>
+                  <p style="color: #86868b; margin: 0; font-size: 15px;">Clear technology priorities, practical implementation steps, and alignment between technology investments and service goals.</p>
+                  
+                  <p style="font-weight: 600; color: #1d1d1f; margin: 0;">What This Looks Like</p>
+                  <p style="color: #86868b; margin: 0; font-size: 15px;">Technology assessment, prioritization workshops, vendor landscape review, and phased implementation planning.</p>
+                  
+                  <p style="font-weight: 600; color: #1d1d1f; margin: 0;">Deliverables</p>
+                  <p style="color: #86868b; margin: 0; font-size: 15px;">Technology roadmap, vendor recommendations, cost estimates, and implementation timeline.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="region-section partner-section">
+        <div class="container">
+          <h2>Partner with Local Experts</h2>
+          <p>If your San Gabriel Valley city is exploring strategy, operations, or implementation support—let's talk. We're here, we understand your challenges, and we're ready to help.</p>
+          <button class="btn btn-primary btn-large">
+            Let's Talk About Your City
+            <span class="btn-arrow">→</span>
+          </button>
+        </div>
+      </section>
+
+      <footer class="sgv-footer">
+        <div class="container">
+          <p class="footer-copyright">© 2026 Cardona Strategy – San Gabriel Valley Local SLED Consulting</p>
+          <p class="footer-keywords">San Gabriel Valley SLED consulting, SGV municipal strategy, local government consulting Southern California, Pasadena city consulting, Arcadia municipal advisory, Alhambra government strategy, SGV city operations improvement, San Gabriel Valley public sector consulting</p>
+        </div>
+      </footer>
+    </main>
+
+    <contact-modal></contact-modal>
+    <sgv-contact-modal></sgv-contact-modal>
+  </div>
+
+  <script src="./script.js" defer></script>
+  <script src="./contact-modal.js" defer></script>
+  <script src="./sgv-contact-modal.js" defer></script>
+</body>
+</html>

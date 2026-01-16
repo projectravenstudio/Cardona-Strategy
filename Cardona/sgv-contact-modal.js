@@ -1,4 +1,4 @@
-class ContactModal extends HTMLElement {
+class SGVContactModal extends HTMLElement {
   constructor() {
     super();
     this._shadow = this.attachShadow({ mode: 'open' });
@@ -53,11 +53,6 @@ class ContactModal extends HTMLElement {
         .contact-modal-close { position: absolute; top: 10px; right: 14px; background: none; border: none; font-size: 22px; cursor: pointer; color: #6b7280; padding: 6px; display: flex; align-items: center; justify-content: center; z-index: 10; pointer-events: auto; }
         .contact-modal-close:hover { color: #1d1d1f; }
         .contact-modal h2 { font-size: 28px; font-weight: 600; margin: 0; color: #1d1d1f; text-align: left; }
-        .contact-info-section { margin-bottom: 24px; }
-        .contact-info-section h3 { font-size: 13px; font-weight: 600; color: #6b7280; text-transform: uppercase; letter-spacing: 0.5px; margin: 0 0 12px 0; }
-        .contact-info-item { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px; color: #374151; font-size: 14px; line-height: 1.5; }
-        .contact-info-icon { flex-shrink: 0; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; margin-top: 2px; }
-        .contact-info-icon svg { width: 18px; height: 18px; stroke: #0A4D8C; stroke-width: 2; }
 
         /* Responsive adjustments */
         @media (max-width: 768px) {
@@ -83,8 +78,8 @@ class ContactModal extends HTMLElement {
           <button class="contact-modal-close" part="close">&times;</button>
           <div class="contact-modal-flipper" part="flipper">
             <div class="contact-modal-front" part="front">
-              <h2>Get In Touch</h2>
-              <p style="color:#374151;line-height:1.6;margin-bottom:18px; text-align: center;">Submit the initial scope questionnaire. The Cardona Strategy team will review your response and coordinate next steps.</p>
+              <h2>San Gabriel Valley Cities – Let's Connect</h2>
+              <p style="color:#374151;line-height:1.6;margin-bottom:18px; text-align: center;">Tell us about your city's priorities and challenges. We'll respond within 24 hours to explore how Cardona Strategy can support your team.</p>
               <button id="messageBtn" class="send-message-btn">Send us a Message</button>
             </div>
 
@@ -92,8 +87,8 @@ class ContactModal extends HTMLElement {
               <h2>Send us a Message!</h2>
               <form id="contactForm" class="contact-form" novalidate>
                 <div class="form-group">
-                  <label for="companyInput">Company name</label>
-                  <input type="text" id="companyInput" name="company" required placeholder="Company name" aria-required="true">
+                  <label for="companyInput">City / Organization</label>
+                  <input type="text" id="companyInput" name="company" required placeholder="City or organization name" aria-required="true">
                 </div>
 
                 <div class="form-group">
@@ -112,42 +107,11 @@ class ContactModal extends HTMLElement {
                 </div>
 
                 <div class="form-group">
-                  <label for="industrySelect">Industry</label>
-                  <select id="industrySelect" name="industry" required aria-required="true">
-                    <option value="">Choose industry</option>
-                    <option>Healthcare</option>
-                    <option>Technology</option>
-                    <option>Government</option>
-                    <option>Construction</option>
-                    <option>Logistics</option>
-                    <option>Hospitality</option>
-                    <option>Energy</option>
-                    <option>Public Safety</option>
-                    <option>Community Impact</option>
-                    <option>Other</option>
-                  </select>
+                  <label for="messageInput">Tell us about your priorities and challenges</label>
+                  <textarea id="messageInput" name="message" required placeholder="What are your city's key priorities?" aria-required="true"></textarea>
                 </div>
 
-                <div class="form-group">
-                  <label for="serviceSelect">Service interest</label>
-                  <select id="serviceSelect" name="service" required aria-required="true">
-                    <option value="">Choose service</option>
-                    <option>Strategy</option>
-                    <option>Brand & Marketing</option>
-                    <option>Capital Funding</option>
-                    <option>Procurement & Operations</option>
-                    <option>Technology & Digital</option>
-                    <option>Community & Stakeholders</option>
-                    <option>Other</option>
-                  </select>
-                </div>
-
-                <div class="form-group">
-                  <label for="challengeInput">Challenge details</label>
-                  <textarea id="challengeInput" name="challenge" required placeholder="Describe the challenge or scope..." rows="5" aria-required="true"></textarea>
-                </div>
-
-                <button type="submit" class="submit-btn">Send Message</button>
+                <button type="submit" class="submit-btn" id="submitBtn">Let's Connect</button>
               </form>
             </div>
 
@@ -199,12 +163,13 @@ class ContactModal extends HTMLElement {
       return;
     }
 
+ 
     const maxAllowed = Math.max(200, Math.floor(window.innerHeight * 0.82));
     let frontHeight = Math.min(Math.ceil(front.scrollHeight) + 28, maxAllowed);
     let backHeight = Math.min(Math.ceil(back.scrollHeight) + 28, maxAllowed);
 
+    
     this._backHeight = backHeight;
-
 
     if (backHeight >= maxAllowed) {
       this._content.style.overflowY = 'auto';
@@ -224,7 +189,9 @@ class ContactModal extends HTMLElement {
 
     const onTransitionEnd = (e) => {
       if (e.target === this._content && e.propertyName === 'height') {
+       
         this._content.style.height = backHeight + 'px';
+        
         setTimeout(() => { this._content.style.height = backHeight + 'px'; }, 40);
         this._content.removeEventListener('transitionend', onTransitionEnd);
         back.querySelector('#companyInput')?.focus();
@@ -234,12 +201,11 @@ class ContactModal extends HTMLElement {
     this._content.addEventListener('transitionend', onTransitionEnd);
 
     this._flipper.classList.add('flipped');
+
     requestAnimationFrame(() => {
       this._content.style.height = backHeight + 'px';
     });
   }
-
-
 
   async _onSubmit(e) {
     e.preventDefault();
@@ -253,9 +219,7 @@ class ContactModal extends HTMLElement {
     const contact = this._form.querySelector('#contactInput').value.trim();
     const phone = this._form.querySelector('#phoneInput').value.trim();
     const email = this._form.querySelector('#emailInput').value.trim();
-    const industry = this._form.querySelector('#industrySelect').value;
-    const service = this._form.querySelector('#serviceSelect').value;
-    const challenge = this._form.querySelector('#challengeInput').value.trim();
+    const message = this._form.querySelector('#messageInput').value.trim();
 
     try {
       const response = await fetch('https://formspree.io/f/xjggvlow', {
@@ -266,10 +230,8 @@ class ContactModal extends HTMLElement {
           contact,
           phone,
           email,
-          industry,
-          service,
-          challenge,
-          _subject: `New business inquiry from ${company} / ${contact}`,
+          message,
+          _subject: `New inquiry from ${company} / ${contact}`,
           _replyto: email
         })
       });
@@ -288,6 +250,7 @@ class ContactModal extends HTMLElement {
   }
 
   open() {
+
     if (!this.isConnected) document.body.appendChild(this);
 
     this._overlay.classList.add('active');
@@ -298,6 +261,7 @@ class ContactModal extends HTMLElement {
       const maxAllowed = Math.max(200, Math.floor(window.innerHeight * 0.82));
       const h = Math.min(Math.ceil(front.scrollHeight) + 28, maxAllowed);
       this._content.style.height = h + 'px';
+
       if (h >= maxAllowed) {
         this._content.style.overflowY = 'auto';
         this._content.style.webkitOverflowScrolling = 'touch';
@@ -356,14 +320,14 @@ class ContactModal extends HTMLElement {
   }
 }
 
-customElements.define('contact-modal', ContactModal);
+customElements.define('sgv-contact-modal', SGVContactModal);
 
-window.openContactModal = function() {
-  const cmp = document.querySelector('contact-modal');
+window.openSGVContactModal = function() {
+  const cmp = document.querySelector('sgv-contact-modal');
   if (cmp && typeof cmp.open === 'function') cmp.open();
 };
 
-window.closeContactModal = function() {
-  const cmp = document.querySelector('contact-modal');
+window.closeSGVContactModal = function() {
+  const cmp = document.querySelector('sgv-contact-modal');
   if (cmp && typeof cmp.close === 'function') cmp.close();
 };

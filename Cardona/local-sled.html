@@ -1,0 +1,233 @@
+    <!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Cardona Strategy's Local SLED Initiative — Serving Local Professionals and Government with Real Results." />
+  <title>Local SLED — Cardona Strategy</title>
+  <link rel="icon" type="image/png" href="logo-icon.png" />
+  <link rel="stylesheet" href="./styles.css" />
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style" />
+</head>
+<body class="local-sled">
+  <script>
+    (function(){ try{ var s = localStorage.getItem('cordona_sidebar_expanded'); if (s === 'true') document.body.classList.add('sidebar-expanded'); }catch(e){} })();
+  </script>
+  <div id="app">
+    <aside class="sidebar" id="sidebar" role="navigation" aria-label="Main Navigation">
+      <div class="sidebar-inner">
+        <div class="sidebar-top">
+          <button class="logo-rail" id="logoRail" aria-label="Cardona Logo" title="Cardona">
+            <div class="logo-container">
+              <div class="logo-image" >
+                <img src="logo-icon.png" alt="Cardona Logo" />
+              </div>
+              <div class="logo-text">
+                Cardona<br/><span>Strategy</span>
+              </div>
+            </div>
+          </button>
+        </div>
+
+        <nav class="sidebar-nav" aria-label="Primary">
+          <ul class="sidebar-menu">
+            <li class="sidebar-menu-item" data-page="home">
+              <button class="sidebar-menu-button" data-key="home">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                  <path d="M3 10.5l9-7.5 9 7.5" />
+                  <path d="M5 9.75V20a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9.75" />
+                  <path d="M10 21v-5a2 2 0 0 1 2-2h0a2 2 0 0 1 2 2v5" />
+                </svg>
+                <span class="text">Home</span>
+              </button>
+            </li>
+
+            <li class="sidebar-menu-item active" data-page="local-sled">
+              <button class="sidebar-menu-button" data-key="local-sled">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M3 8l9-5 9 5"/>
+                  <path d="M6 11v6M10 11v6M14 11v6M18 11v6"/>
+                  <path d="M3 20h18"/>
+                </svg>
+                <span class="text">Local SLED</span>
+              </button>
+            </li>
+
+            <li class="sidebar-menu-item" data-page="offerings">
+              <button class="sidebar-menu-button" data-key="offerings">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                 <rect x="3" y="7" width="18" height="14" rx="2" stroke="currentColor" stroke-width="2" fill="none"/>
+                 <rect x="9" y="3" width="6" height="4" rx="1" stroke="currentColor" stroke-width="2" fill="none"/>
+                 <line x1="9" y1="7" x2="9" y2="21" stroke="currentColor" stroke-width="1.5"/>
+                 <line x1="15" y1="7" x2="15" y2="21" stroke="currentColor" stroke-width="1.5"/>
+                </svg>
+                <span class="text">Offerings</span>
+              </button>
+            </li>
+            
+            <li class="sidebar-menu-item" data-page="industries">
+              <button class="sidebar-menu-button" data-key="industries" >
+               <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+                <rect x="4" y="14" width="6" height="14" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                <rect x="11" y="8" width="10" height="20" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                <ellipse cx="16" cy="24" rx="2" ry="3" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                <line x1="13" y1="14" x2="19" y2="14" stroke="currentColor" stroke-width="1.5"/>
+                <line x1="13" y1="17" x2="19" y2="17" stroke="currentColor" stroke-width="1.5"/>
+                <rect x="22" y="14" width="6" height="14" fill="none" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+                <span class="text">Industries</span>
+              </button>
+            </li>
+          </ul>
+        </nav>
+
+        <div class="sidebar-footer">
+          <button class="contact-rail" id="contactBtn" title="Contact Us">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+              <rect x="4" y="8" width="24" height="16" fill="none" stroke="#FFFFFF" stroke-width="2"/>
+              <line x1="4" y1="8" x2="16" y2="18" stroke="#FFFFFF" stroke-width="2"/>
+              <line x1="28" y1="8" x2="16" y2="18" stroke="#FFFFFF" stroke-width="2"/>
+            </svg>
+            <span class="rail-text">Contact Us</span>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <main role="main">
+      <a href="./index.html" class="back-button">
+        <span>←</span> Back to Home
+      </a>
+
+      <section class="offering-hero" style="background-image: url('https://images.unsplash.com/photo-1611639906810-4a29ece1b847?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjaXR5JTIwaGFsbCUyMGdvdmVybm1lbnQlMjBidWlsZGluZ3xlbnwxfHx8fDE3Njc5OTc1NTF8MA&ixlib=rb-4.1.0&q=80&w=1080  ')">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <h1>Local Professionals. Local Government. Real Results.</h1>
+          <p>Cardona Strategy's Local SLED Initiative ensures that cities are served by professionals who reflect the communities they work in, understand local dynamics, and are invested in long-term outcomes.</p>
+        </div>
+        <button class="scroll-indicator">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 5v14M19 12l-7 7-7-7"/>
+          </svg>
+        </button>
+      </section>
+
+      <section class="offering-section">
+        <div class="container">
+          <div class="section-content">
+            <h2>Our Local Approach</h2>
+            <div class="content-grid">
+              <div class="content-block">
+                <p>We combine proven public-sector consulting expertise with deep local understanding. Our teams are staffed with professionals who live in, work in, and understand the communities they serve.</p>
+              </div>
+              <div class="content-block">
+                <p>We help elected officials and city leadership move from strategy to execution with clarity, accountability, and momentum—backed by people who genuinely understand the local context.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="offering-section alt">
+        <div class="container">
+          <div class="section-content">
+            <h2>Communities We Serve</h2>
+            <p class="section-intro">Select a region to learn more about our local SLED consulting services and community-specific initiatives.</p>
+            
+            <div class="communities-list">
+              <div class="community-item">
+                <div class="community-header">
+                  <h3>San Gabriel Valley</h3>
+                  <svg class="chevron" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="m19 9-7 7-7-7" />
+                  </svg>
+                </div>
+                <p class="community-region">Southern California</p>
+                <div class="community-details">
+                  <p class="community-description">Diverse communities with shared challenges in operations, development, budgeting, and technology. We provide pragmatic, locally-informed consulting and implementation support.</p>
+                  
+                  <div class="community-cities">
+                    <h4>Cities We Serve (30)</h4>
+                    <div class="cities-grid-mini">
+                      <span class="city-name">Alhambra</span>
+                      <span class="city-name">Arcadia</span>
+                      <span class="city-name">Azusa</span>
+                      <span class="city-name">Baldwin Park</span>
+                      <span class="city-name">Bradbury</span>
+                      <span class="city-name">Claremont</span>
+                      <span class="city-name">Covina</span>
+                      <span class="city-name">Diamond Bar</span>
+                      <span class="city-name">Duarte</span>
+                      <span class="city-name">El Monte</span>
+                      <span class="city-name">Glendora</span>
+                      <span class="city-name">Industry</span>
+                      <span class="city-name">Irwindale</span>
+                      <span class="city-name">La Cañada Flintridge</span>
+                      <span class="city-name">La Puente</span>
+                      <span class="city-name">La Verne</span>
+                      <span class="city-name">Monrovia</span>
+                      <span class="city-name">Monterey Park</span>
+                      <span class="city-name">Pasadena</span>
+                      <span class="city-name">Pomona</span>
+                      <span class="city-name">Rosemead</span>
+                      <span class="city-name">San Dimas</span>
+                      <span class="city-name">San Gabriel</span>
+                      <span class="city-name">San Marino</span>
+                      <span class="city-name">Sierra Madre</span>
+                      <span class="city-name">South El Monte</span>
+                      <span class="city-name">South Pasadena</span>
+                      <span class="city-name">Temple City</span>
+                      <span class="city-name">Walnut</span>
+                      <span class="city-name">West Covina</span>
+                    </div>
+                  </div>
+
+                  <a href="./sgv-local-sled.html" class="community-link-btn">
+                    Local SLED Initiative - San Gabriel Valley
+                    <span class="arrow">→</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="offering-section">
+        <div class="container">
+          <div class="section-content">
+            <h2>How Cities Engage Cardona Strategy</h2>
+            
+            <div class="engagement-text">
+              <p>Cities typically begin with <strong>leadership alignment or strategic priorities work</strong>, establishing clear direction and shared understanding among elected officials and executive teams.</p>
+
+              <p>From there, many expand into <strong>operations improvement, technology enablement, or hands-on implementation support</strong> as needs evolve and capacity allows.</p>
+
+              <p>We meet cities where they are and scale our support to match their priorities, budget, and organizational capacity—always with professionals who understand the local context.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="offering-cta">
+        <div class="container">
+          <h2>Let's Explore How We Can Help</h2>
+          <p>If you're a city leader exploring strategy, operations, or implementation support with a local partner who understands your community, we'd welcome a conversation..</p>
+          <button class="btn btn-primary btn-large">
+            Start a Conversation
+            <span class="btn-arrow">→</span>
+          </button>
+        </div>
+      </section>
+    </main>
+        <footer class="footer" role="contentinfo">
+      <div class="container footer-content">
+        <p>&copy; 2025 Cardona Strategy. Local SLED consulting with professionals who understand your community.</p>
+      </div>
+    </footer>
+    <contact-modal></contact-modal>
+  </div>
+  <script src="./script.js" defer></script>
+  <script src="./contact-modal.js" defer></script>
+</body>
+</html>
