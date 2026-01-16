@@ -262,6 +262,7 @@ class ContactModal extends HTMLElement {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
+          subject: `New Website Lead | Cardona Strategy`,
           company,
           contact,
           phone,
@@ -269,7 +270,6 @@ class ContactModal extends HTMLElement {
           industry,
           service,
           challenge,
-          _subject: `New business inquiry from ${company} / ${contact}`,
           _replyto: email
         })
       });

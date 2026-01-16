@@ -121,8 +121,8 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('scheduleBtn')?.addEventListener('click', openContactModal);
     document.getElementById('customSolutionBtn')?.addEventListener('click', openContactModal);
 
-    document.querySelectorAll('.cta-btn, .custom-cta').forEach((btn) => {
-      if (btn.textContent.includes('Start a Conversation') || btn.textContent.includes('Work With Us')) {
+    document.querySelectorAll('.cta-btn, .custom-cta, .offering-cta .btn-primary, .region-cta .btn-primary').forEach((btn) => {
+      if (btn.textContent.includes('Start a Conversation') || btn.textContent.includes('Work With Us') || btn.textContent.includes('Discuss Custom')) {
         btn.addEventListener('click', openContactModal);
       }
     });
@@ -233,45 +233,71 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
 
-    document.querySelectorAll('.community-header').forEach(header => {
+    document.querySelectorAll('.community-header-wrapper').forEach(header => {
       header.addEventListener('click', function() {
         const item = this.closest('.community-item');
         const details = item.querySelector('.community-details');
-        
-        item.classList.toggle('open');
+        const actionText = item.querySelector('.action-text');
+        const actionWrapper = item.querySelector('.action-wrapper');
         
         if (item.classList.contains('open')) {
-          details.style.display = 'block';
+          item.classList.remove('open');
+          item.classList.add('closing');
+          
+          setTimeout(() => {
+            details.style.display = 'none';
+            if (actionText) actionText.textContent = 'Explore';
+            item.classList.remove('closing');
+          }, 200);
         } else {
-          details.style.display = 'none';
+          item.classList.add('opening');
+          details.style.display = 'block';
+          if (actionText) actionText.textContent = 'Close';
+          
+          setTimeout(() => {
+            item.classList.remove('opening');
+            item.classList.add('open');
+          }, 500);
         }
       });
     });
 
 
-    document.querySelectorAll('.offering-cta .btn-primary').forEach(btn => {
-      if (btn.textContent.includes('Start a Conversation')) {
-        btn.addEventListener('click', openContactModal);
-      }
-    });
-
-    document.querySelectorAll('.region-cta .btn-primary').forEach(btn => {
-      if (btn.textContent.includes('Start a Conversation')) {
-        btn.addEventListener('click', openContactModal);
-      }
-    });
-
     document.querySelectorAll('.accordion-header').forEach(header => {
       header.addEventListener('click', function() {
         const item = this.closest('.accordion-item');
         const isOpen = item.classList.contains('open');
+        const actionText = item.querySelector('.accordion-action-text');
 
-        document.querySelectorAll('.accordion-item').forEach(accordionItem => {
-          accordionItem.classList.remove('open');
-        });
-        
-        if (!isOpen) {
-          item.classList.add('open');
+        if (isOpen) {
+          item.classList.remove('open');
+          item.classList.add('closing-accordion');
+          if (actionText) actionText.textContent = 'Details';
+          
+          setTimeout(() => {
+            item.classList.remove('closing-accordion');
+          }, 500);
+        } else {
+          document.querySelectorAll('.accordion-item').forEach(accordionItem => {
+            if (accordionItem !== item && accordionItem.classList.contains('open')) {
+              accordionItem.classList.remove('open');
+              accordionItem.classList.add('closing-accordion');
+              const text = accordionItem.querySelector('.accordion-action-text');
+              if (text) text.textContent = 'Explore';
+              
+              setTimeout(() => {
+                accordionItem.classList.remove('closing-accordion');
+              }, 500);
+            }
+          });
+          
+          item.classList.add('opening-accordion');
+          if (actionText) actionText.textContent = 'Close';
+          
+          setTimeout(() => {
+            item.classList.remove('opening-accordion');
+            item.classList.add('open');
+          }, 200);
         }
       });
     });

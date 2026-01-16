@@ -227,11 +227,11 @@ class SGVContactModal extends HTMLElement {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           company,
-          contact,
+          contact_name: contact,
           phone,
           email,
           message,
-          _subject: `New inquiry from ${company} / ${contact}`,
+          _subject: 'New Website Lead | Cardona Strategy',
           _replyto: email
         })
       });
