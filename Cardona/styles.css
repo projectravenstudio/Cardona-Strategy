@@ -1316,7 +1316,7 @@ body.page-enter main {
   padding: 14px 28px;
   background: linear-gradient(135deg, #043763 0%, #0b5fa8 100%);
   color: white;
-  border-radius: 28px;
+  border-radius: 12px;
   text-decoration: none;
   font-weight: 600;
   font-size: 15px;
