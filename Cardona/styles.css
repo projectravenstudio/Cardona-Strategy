@@ -938,7 +938,7 @@ body.page-enter main {
 
 @media (max-width: 480px) {
   .community-header {
-    padding: 16px;
+    padding: 12px;
   }
 }
 
@@ -960,8 +960,8 @@ body.page-enter main {
 
 @media (max-width: 480px) {
   .community-header-wrapper {
-    gap: 10px;
-    padding: 14px;
+    gap: 8px;
+    padding: 10px;
   }
 }
 
@@ -983,19 +983,19 @@ body.page-enter main {
 
 @media (max-width: 1024px) {
   .community-header h3 {
-    font-size: 28px;
+    font-size: 26px;
   }
 }
 
 @media (max-width: 768px) {
   .community-header h3 {
-    font-size: 24px;
+    font-size: 20px;
   }
 }
 
 @media (max-width: 480px) {
   .community-header h3 {
-    font-size: 20px;
+    font-size: 16px;
   }
 }
 
@@ -1015,7 +1015,7 @@ body.page-enter main {
 
 @media (max-width: 480px) {
   .community-region {
-    font-size: 14px;
+    font-size: 12px;
   }
 }
 

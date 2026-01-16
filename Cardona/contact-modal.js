@@ -258,7 +258,7 @@ class ContactModal extends HTMLElement {
     const challenge = this._form.querySelector('#challengeInput').value.trim();
 
     try {
-      const response = await fetch('https://formspree.io/f/xjggvlow', {
+      const response = await fetch('https://formspree.io/f/mojjjjvl', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
