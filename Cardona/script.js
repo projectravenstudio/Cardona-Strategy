@@ -268,14 +268,19 @@ document.addEventListener('DOMContentLoaded', function () {
         const item = this.closest('.accordion-item');
         const isOpen = item.classList.contains('open');
         const actionText = item.querySelector('.accordion-action-text');
+        const contentDiv = item.querySelector('.accordion-content');
 
         if (isOpen) {
           item.classList.remove('open');
           item.classList.add('closing-accordion');
           if (actionText) actionText.textContent = 'Details';
           
+          // Reset max-height for closing animation
+          contentDiv.style.maxHeight = '0px';
+          
           setTimeout(() => {
             item.classList.remove('closing-accordion');
+            contentDiv.style.maxHeight = '';
           }, 500);
         } else {
           document.querySelectorAll('.accordion-item').forEach(accordionItem => {
@@ -283,10 +288,14 @@ document.addEventListener('DOMContentLoaded', function () {
               accordionItem.classList.remove('open');
               accordionItem.classList.add('closing-accordion');
               const text = accordionItem.querySelector('.accordion-action-text');
-              if (text) text.textContent = 'Explore';
+              const closingContent = accordionItem.querySelector('.accordion-content');
+              if (text) text.textContent = 'Details';
+              
+              closingContent.style.maxHeight = '0px';
               
               setTimeout(() => {
                 accordionItem.classList.remove('closing-accordion');
+                closingContent.style.maxHeight = '';
               }, 500);
             }
           });
@@ -294,10 +303,34 @@ document.addEventListener('DOMContentLoaded', function () {
           item.classList.add('opening-accordion');
           if (actionText) actionText.textContent = 'Close';
           
+          // Calculate height dynamically based on content
+          const scrollHeight = contentDiv.scrollHeight;
+          contentDiv.style.maxHeight = (scrollHeight + 40) + 'px';
+          
           setTimeout(() => {
             item.classList.remove('opening-accordion');
             item.classList.add('open');
+            // Ensure it stays open with large max-height
+            contentDiv.style.maxHeight = '3000px';
           }, 200);
+          
+          // Smooth scroll to accordion if it's off-screen (useful for mobile)
+          setTimeout(() => {
+            const headerRect = this.getBoundingClientRect();
+            // If header is above viewport, scroll it into view
+            if (headerRect.top < 0 || headerRect.top > window.innerHeight) {
+              this.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+          }, 250);
+          
+          // Handle window resize to recalculate height
+          const resizeHandler = () => {
+            if (item.classList.contains('open')) {
+              const newHeight = contentDiv.scrollHeight;
+              contentDiv.style.maxHeight = (newHeight + 40) + 'px';
+            }
+          };
+          window.addEventListener('resize', resizeHandler);
         }
       });
     });
