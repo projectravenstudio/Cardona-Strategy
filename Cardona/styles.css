@@ -272,7 +272,6 @@ body.page-enter main {
 .hero-title { font-size: 80px; line-height: 1; margin: 6px 0 20px; color: #1d1d1f; font-weight: 400; letter-spacing: -0.5px; }
 .hero-title .highlight { color: #043763; }
 .hero-subtitle { color: #86868b; max-width: 100%; margin: 0 0 36px; font-size: 30px; line-height: 1.65; }
-.hero-buttons { display: flex; gap: 18px; margin-bottom: 56px; flex-wrap: wrap; }
 
 .btn {
   display: inline-flex;
