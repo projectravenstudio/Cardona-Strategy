@@ -891,7 +891,7 @@ body.page-enter main {
     filter: drop-shadow(0 0 0 rgba(4, 55, 99, 0.6)) drop-shadow(0 0 0 rgba(4, 55, 99, 0.6));
   }
   70% {
-    filter: drop-shadow(0 0 10px rgba(4, 55, 99, 0)) drop-shadow(0 0 10px rgba(4, 55, 99, 0));
+    filter: drop-shadow(0 0 20px rgba(4, 55, 99, 0)) drop-shadow(0 0 30px rgba(4, 55, 99, 0));
   }
   100% {
     filter: drop-shadow(0 0 0 rgba(4, 55, 99, 0.6)) drop-shadow(0 0 0 rgba(4, 55, 99, 0.6));
