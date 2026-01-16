@@ -222,7 +222,7 @@ class SGVContactModal extends HTMLElement {
     const message = this._form.querySelector('#messageInput').value.trim();
 
     try {
-      const response = await fetch('https://formspree.io/f/mojjjjvl', {
+      const response = await fetch('=https://formspree.io/f/mykgepzq', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
