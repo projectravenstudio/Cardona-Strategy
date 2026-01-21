@@ -1558,7 +1558,7 @@ body.page-enter main {
   .hero-content h1 {
     font-size: 48px;
   }
-}
+
 
 @media (max-width: 1024px) {
   .back-button {
