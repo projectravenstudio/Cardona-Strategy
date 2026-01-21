@@ -364,38 +364,43 @@
 }
 
 @media (max-width: 768px) {
-  .back-button {
-    position: static;
+   .back-button {
+    position: absolute;
+    right: 20px;
+    top: 20px;
     left: auto;
-    top: auto;
-    display: inline-flex;
-    margin-bottom: 24px;
     width: auto;
-    opacity: 1;
-    padding: 10px 16px;
-    font-size: 13px;
-    gap: 6px;
+    opacity: 0.7;
+    padding: 8px 10px;
+    font-size: 10px;
+    gap: 5px;
   }
 }
 
 @media (max-width: 600px) {
-  .back-button {
-    padding: 8px 12px;
-    font-size: 12px;
-    gap: 6px;
-    width: 100%;
-    justify-content: center;
-    margin-bottom: 20px;
+   .back-button {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    left: auto;
+    width: auto;
+    opacity: 0.7;
+    padding: 6px 8px;
+    font-size: 8px;
+    gap: 5px;
   }
 }
 
 @media (max-width: 420px) {
-  .back-button {
-    width: 100%;
-    justify-content: center;
-    padding: 8px 12px;
-    margin-bottom: 20px;
-    font-size: 11px;
+ .back-button {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    left: auto;
+    width: auto;
+    opacity: 0.7;
+    padding: 2px 6px;
+    font-size: 8px;
     gap: 5px;
   }
 
