@@ -199,7 +199,7 @@ body.sidebar-expanded .logo-text { opacity: 1; transform: translateX(0) scale(1)
   position: relative;
   z-index: 1;
   filter: drop-shadow(0 0 0 rgba(4, 55, 99, 0.4)) drop-shadow(0 0 0 rgba(4, 55, 99, 0.4));
-  animation: pulsateSvg 3.5s infinite;
+  animation: pulsateSvg 3s infinite;
 }
 
 .sidebar-menu-item .svg { font-size: 18px; width: 20px; height: 20px; flex-shrink: 0; min-width: 25px; min-height: 25px; }
