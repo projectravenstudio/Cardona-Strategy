@@ -313,6 +313,7 @@ body.page-enter main {
   .btn-primary:hover { 
     transform: translateY(-8px); 
     box-shadow: 0 20px 44px var(--btn-shadow-deep); 
+    
   }
 }
 
@@ -414,7 +415,7 @@ body.page-enter main {
     gap: 8px;
   }
 }
-.cta-btn:hover { transform: translateY(-2px); box-shadow: 0 14px 36px rgba(4,55,99,0.14); }
+.cta-btn:hover { transform: translateY(-2px); box-shadow: 0 14px 36px rgba(4,55,99,0.14); background-color: #0b5fa8; }
 .cta-arrow { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; transition: transform .3s var(--easing); font-size: 18px; color: inherit; line-height: 1; -webkit-font-smoothing: antialiased; }
 .cta-arrow svg { display: block; width: 18px; height: 18px; stroke: currentColor; }
 .cta-btn:hover .cta-arrow { transform: translateX(4px); }
@@ -1467,13 +1468,14 @@ body.page-enter main {
 }
 
 .offering-cta .btn-primary {
-  background: linear-gradient(135deg, var(--accent-start) 0%, var(--accent-end) 100%);
+  background-color: #043763;
   box-shadow: 0 10px 30px rgba(4, 55, 99, 0.2);
 }
 
 .offering-cta .btn-primary:hover {
   transform: translateY(-4px);
   box-shadow: 0 14px 40px rgba(4, 55, 99, 0.3);
+  background-color: #0b5fa8;
 }
 
 .back-button {
