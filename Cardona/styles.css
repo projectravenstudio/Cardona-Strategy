@@ -3036,6 +3036,25 @@ body.page-enter main {
   li {
     margin-bottom: 8px;
   }
+
+  .footer {
+    padding: 10px 0;
+    font-size: 12px;
+  }
+
+  .sgv-footer {
+    padding: 20px 0;
+  }
+
+  .footer-copyright {
+    font-size: 11px;
+    margin-bottom: 8px;
+  }
+
+  .footer-keywords {
+    font-size: 10px;
+    line-height: 1.4;
+  }
 }
 
 @media (max-width: 480px) {
@@ -3090,6 +3109,25 @@ body.page-enter main {
 
   h2, h3, h4, h5, h6 {
     word-break: break-word;
+  }
+
+  .footer {
+    padding: 8px 0;
+    font-size: 10px;
+  }
+
+  .sgv-footer {
+    padding: 16px 0;
+  }
+
+  .footer-copyright {
+    font-size: 10px;
+    margin-bottom: 6px;
+  }
+
+  .footer-keywords {
+    font-size: 9px;
+    line-height: 1.3;
   }
 }
 
