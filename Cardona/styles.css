@@ -216,7 +216,7 @@ body.sidebar-expanded .logo-text { opacity: 1; transform: translate(-50%, -50%) 
 }
 
 .sidebar-menu-item .svg { font-size: 18px; width: 20px; height: 20px; flex-shrink: 0; min-width: 25px; min-height: 25px; }
-.sidebar-menu-item .text { position: relative;}
+.sidebar-menu-item .text { position: relative; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 160px; }
 
 .sidebar-footer { display: flex; flex-direction: column; gap: 8px; align-items: center; padding: 8px 0; overflow: hidden; scrollbar-width: none; -ms-overflow-style: none; }
 
@@ -256,7 +256,7 @@ body:not(.sidebar-expanded) .sidebar-menu-item .text { display: none; }
 body:not(.sidebar-expanded) .contact-rail { width: 44px; height: 44px; padding: 10px; justify-content: center; border-radius: 12px; margin-top: 0; }
 body:not(.sidebar-expanded) .contact-rail .rail-text { display: none; }
 
-main { transition: opacity .24s ease, margin-left .32s var(--easing); opacity: 1; margin-left: 86px; }
+main { transition: opacity .24s ease, margin-left .32s var(--easing); opacity: 1; margin-left: 86px; position: relative; z-index: 1; }
 
 @media (max-width: 1024px) {
   main { margin-left: 0; }
