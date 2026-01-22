@@ -46,7 +46,10 @@ class SGVContactModal extends HTMLElement {
         .form-group input, .form-group textarea { padding: 10px 12px; border: 1px solid #d1d5db; border-radius: 8px; font-family: inherit; font-size: 14px; transition: border-color 0.2s; }
         .form-group select { padding: 10px 12px; border: 1px solid #d1d5db; border-radius: 8px; background: #fff; font-family: inherit; font-size: 14px; }
         .form-group input:focus, .form-group textarea:focus { outline: none; border-color: #043763; box-shadow: 0 0 0 3px rgba(4, 55, 99, 0.06); }
-        .form-group textarea { resize: vertical; min-height: 80px; }
+        .form-group textarea { resize: vertical; min-height: 80px; max-height: 150px; overflow-y: auto; }
+        .form-group input.phone-invalid { border-color: #dc2626; }
+        .phone-error-indicator { color: #dc2626; font-size: 12px; font-weight: 600; display: none; margin-top: 4px; }
+        .form-group input.phone-invalid ~ .phone-error-indicator { display: block; }
         .submit-btn { background-color: #043763; color: white; border: none; padding: 12px 10px; border-radius: 8px; font-weight: 600; font-size: 14px; cursor: pointer; transition: all 0.16s; margin-top: 8px; width: 100%; }
         .submit-btn:hover { background-color: #0a4d8c; transform: translateY(-2px); }
         @keyframes slideUp { from { opacity: 0; transform: translateY(20px);} to { opacity: 1; transform: translateY(0);} }
@@ -98,7 +101,8 @@ class SGVContactModal extends HTMLElement {
 
                 <div class="form-group">
                   <label for="phoneInput">Phone number</label>
-                  <input type="tel" id="phoneInput" name="phone" required placeholder="(123) 456-7890" aria-required="true">
+                  <input type="tel" id="phoneInput" name="phone" required placeholder="(123) 456-7890" aria-required="true" pattern="[0-9\-\+\(\)\s]*" inputmode="numeric">
+                  <span class="phone-error-indicator">Numbers only</span>
                 </div>
 
                 <div class="form-group">
@@ -141,6 +145,21 @@ class SGVContactModal extends HTMLElement {
     this._messageBtn.addEventListener('click', this._onMessageClick);
     this._form.addEventListener('submit', this._onSubmit);
     window.addEventListener('resize', this._onResize);
+
+
+    const phoneInput = this._shadow.getElementById('phoneInput');
+    if (phoneInput) {
+      phoneInput.addEventListener('input', (e) => {
+        const value = e.target.value;
+        const hasInvalidChars = /[^\d\-\+\(\)\s]/.test(value);
+        if (hasInvalidChars) {
+          e.target.classList.add('phone-invalid');
+          e.target.value = value.replace(/[^\d\-\+\(\)\s]/g, '');
+        } else {
+          e.target.classList.remove('phone-invalid');
+        }
+      });
+    }
   }
 
   disconnectedCallback() {
