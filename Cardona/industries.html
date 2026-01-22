@@ -15,87 +15,7 @@
     (function(){ try{ var s = localStorage.getItem('cordona_sidebar_expanded'); if (s === 'true') document.body.classList.add('sidebar-expanded'); }catch(e){} })();
   </script>
   <div id="app">
-    <aside class="sidebar" id="sidebar" role="navigation" aria-label="Main Navigation">
-      <div class="sidebar-inner">
-        <div class="sidebar-top">
-          <button class="logo-rail" id="logoRail" aria-label="Cardona Logo" title="Cardona">
-            <div class="logo-container">
-              <div class="logo-image" >
-                <img src="logo-icon.png" alt="Cardona Logo" />
-              </div>
-              <div class="logo-text">
-                Cardona<br/><span>Strategy</span>
-              </div>
-            </div>
-          </button>
-        </div>
-
-        <nav class="sidebar-nav" aria-label="Primary">
-          <ul class="sidebar-menu">
-           <li class="sidebar-menu-item" data-page="home"> 
-              <button class="sidebar-menu-button" data-key="home">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-                  <path d="M3 10.5l9-7.5 9 7.5" />
-                  <path d="M5 9.75V20a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V9.75" />
-                  <path d="M10 21v-5a2 2 0 0 1 2-2h0a2 2 0 0 1 2 2v5" />
-                </svg>
-                <span class="text">Home</span>
-              </button>
-            </li>
-
-            <li class="sidebar-menu-item" data-page="local-sled">
-              <button class="sidebar-menu-button" data-key="local-sled">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M3 8l9-5 9 5"/>
-                  <path d="M6 11v6M10 11v6M14 11v6M18 11v6"/>
-                  <path d="M3 20h18"/>
-                </svg>
-                <span class="text">Local SLED</span>
-              </button>
-            </li>
-
-              <li class="sidebar-menu-item" data-page="offerings">
-             
-              <button class="sidebar-menu-button" data-key="offerings">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                 <rect x="3" y="7" width="18" height="14" rx="2" stroke="currentColor" stroke-width="2" fill="none"/>
-                 <rect x="9" y="3" width="6" height="4" rx="1" stroke="currentColor" stroke-width="2" fill="none"/>
-                 <line x1="9" y1="7" x2="9" y2="21" stroke="currentColor" stroke-width="1.5"/>
-                 <line x1="15" y1="7" x2="15" y2="21" stroke="currentColor" stroke-width="1.5"/>
-              </svg>
-                <span class="text">Offerings</span>
-              </button>
-              
-              </li>
-            
-            <li class="sidebar-menu-item active" data-page="industries">
-              <button class="sidebar-menu-button" data-key="industries" >
-               <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
-                <rect x="4" y="14" width="6" height="14" fill="none" stroke="currentColor" stroke-width="1.5"/>
-                <rect x="11" y="8" width="10" height="20" fill="none" stroke="currentColor" stroke-width="1.5"/>
-                <ellipse cx="16" cy="24" rx="2" ry="3" fill="none" stroke="currentColor" stroke-width="1.5"/>
-                <line x1="13" y1="14" x2="19" y2="14" stroke="currentColor" stroke-width="1.5"/>
-                <line x1="13" y1="17" x2="19" y2="17" stroke="currentColor" stroke-width="1.5"/>
-                <rect x="22" y="14" width="6" height="14" fill="none" stroke="currentColor" stroke-width="1.5"/>
-              </svg>
-                <span class="text">Industries</span>
-              </button>
-            </li>
-          </ul>
-        </nav>
-
-        <div class="sidebar-footer">
-          <button class="contact-rail" id="contactBtn" title="Contact Us">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
-              <rect x="4" y="8" width="24" height="16" fill="none" stroke="#FFFFFF" stroke-width="2"/>
-              <line x1="4" y1="8" x2="16" y2="18" stroke="#FFFFFF" stroke-width="2"/>
-              <line x1="28" y1="8" x2="16" y2="18" stroke="#FFFFFF" stroke-width="2"/>
-            </svg>
-            <span class="rail-text">Contact Us</span>
-          </button>
-        </div>
-      </div>
-    </aside>
+    <sidebar-component active-page="industries"></sidebar-component>
 
     <main role="main">
 
@@ -261,13 +181,11 @@
         </div>
       </section>
     </main>
-    <footer class="footer" role="contentinfo">
-      <div class="container footer-content">
-        <p>&copy; 2026 Cardona Strategy. All Rights Reserved.</p>
-      </div>
-    </footer>
+    <footer-component></footer-component>
   </div>
   <contact-modal></contact-modal>
+  <script src="./sidebar.js"></script>
+  <script src="./footer.js"></script>
   <script src="./contact-modal.js"></script>
   <script src="./script.js"></script>
 

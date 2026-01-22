@@ -275,7 +275,6 @@ document.addEventListener('DOMContentLoaded', function () {
           item.classList.add('closing-accordion');
           if (actionText) actionText.textContent = 'Details';
           
-          // Reset max-height for closing animation
           contentDiv.style.maxHeight = '0px';
           
           setTimeout(() => {
@@ -303,27 +302,22 @@ document.addEventListener('DOMContentLoaded', function () {
           item.classList.add('opening-accordion');
           if (actionText) actionText.textContent = 'Close';
           
-          // Calculate height dynamically based on content
           const scrollHeight = contentDiv.scrollHeight;
           contentDiv.style.maxHeight = (scrollHeight + 40) + 'px';
           
           setTimeout(() => {
             item.classList.remove('opening-accordion');
             item.classList.add('open');
-            // Ensure it stays open with large max-height
             contentDiv.style.maxHeight = '3000px';
           }, 200);
           
-          // Smooth scroll to accordion if it's off-screen (useful for mobile)
           setTimeout(() => {
             const headerRect = this.getBoundingClientRect();
-            // If header is above viewport, scroll it into view
             if (headerRect.top < 0 || headerRect.top > window.innerHeight) {
               this.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
           }, 250);
           
-          // Handle window resize to recalculate height
           const resizeHandler = () => {
             if (item.classList.contains('open')) {
               const newHeight = contentDiv.scrollHeight;
