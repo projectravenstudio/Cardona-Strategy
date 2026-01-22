@@ -2426,6 +2426,7 @@ body.page-enter main {
 @media (max-width: 1024px) {
   .accordion-title {
     font-size: 18px;
+    margin-top: 15px;
   }
 }
 
@@ -2433,6 +2434,7 @@ body.page-enter main {
   .accordion-title {
     font-size: 15px;
     line-height: 1.4;
+    margin-top: 10px;
   }
 }
 
